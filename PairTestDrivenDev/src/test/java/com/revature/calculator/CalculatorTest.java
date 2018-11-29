@@ -2,8 +2,7 @@ package com.revature.calculator;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 public class CalculatorTest {
 
@@ -36,7 +35,16 @@ public class CalculatorTest {
 	
 	@Test
 	public void twoNumbersReturnsSum() {
-		assertEquals(28.2,c.add("12.9,15.3"),.001);
+		assertEquals(28.2, c.add("12.9,15.3"), .001);
+	}
+	
+	@Test
+	public void nullReturnsZero() {
+		assertEquals(0, c.add(null), .001);
+	}
+	@Test
+	public void moreThanTwoInputs() {
+		assertEquals(4.9, c.add("3.2,1.7,4555.09"), .001);
 	}
 
 }
