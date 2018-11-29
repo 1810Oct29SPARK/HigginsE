@@ -7,14 +7,17 @@ public class Calculator {
 
 	public Double add(String toAdd) {
 		Double sum = 0.0;
-		if (!toAdd.equals("")) {
+		if (toAdd == null) {
+			sum = 0.0;
+		} else if (!toAdd.equals("")) {
 			// split the string toAdd on a , delimiter
 			String[] numbers = toAdd.split(",");
-			for (String number : numbers) {
+			for (String number : numbers) { // augmented for loop whaaaa
 				// parse the values as Doubles
 				sum += Double.parseDouble(number);
 			}
 		}
+
 		// return their sum
 		return sum;
 	}
