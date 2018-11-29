@@ -7,6 +7,16 @@ import org.junit.*;
 public class CalculatorTest {
 
 	private Calculator c;
+	
+	@BeforeClass
+	public static void startMsg() {
+		System.out.println("Calculator Test Starting...");
+	}
+	
+	@AfterClass
+	public static void endMsg() {
+		System.out.println("Calculator Test Ends.");
+	}
 
 	@Before
 	public void setCalculator() {
