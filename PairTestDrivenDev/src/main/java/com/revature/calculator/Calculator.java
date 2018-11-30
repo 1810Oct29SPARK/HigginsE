@@ -5,7 +5,7 @@ public class Calculator {
 	public Calculator() {
 	}
 
-	public Double add(String toAdd) {
+	public Double add(String toAdd) throws CalculatorException {
 		Double sum = 0.0;
 		
 		if (toAdd == null) {
@@ -19,11 +19,22 @@ public class Calculator {
 				// parse the values as Doubles
 				sum += Double.parseDouble(number);
 			}
+			
+			if (numbers.length > 2) {
+				throw new CalculatorException("more than 2 arguments");
+			}
 			// return their sum
 			return sum;
 		}
 		
 		return 0.0;
+	}
+	
+	class CalculatorException extends Exception {
+		public CalculatorException(String arg0) {
+			super();
+			System.out.println("more than 2 arguments");
+		}
 	}
 
 }

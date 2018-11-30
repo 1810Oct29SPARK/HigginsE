@@ -34,27 +34,47 @@ public class CalculatorTest {
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
 
+	
+	@Test
+	public void toManyArguments() {
+		try {
+			assertEquals("more than 2 arguments", c.add("4.9,6.9,4.2"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Test
 	public void emptyStringReturnsZero() {
-		assertEquals(0, c.add(""), .001); // floating-point assertions require an offset
+		try {
+			assertEquals(0, c.add(""), .001);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // floating-point assertions require an offset
 	}
 	
 	@Test
 	public void twoNumbersReturnsSum() {
-		assertEquals(28.2,c.add("12.9,15.3"),.001);
+		try {
+			assertEquals(28.2,c.add("12.9,15.3"),.001);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
 	public void returnZeroIfNull() {
-		assertEquals(0,c.add(null),.001);
+		try {
+			assertEquals(0,c.add(null),.001);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-	@Test
-	public void twoArgumentsReturnsException() {
-		
-		expectedException.expect(CalculatorException);
-		//assertEquals("CalculatorException",c.add("5.3,3.1"),.001);
-		
-	}
+	
 
 }
