@@ -1,9 +1,9 @@
 package com.revature.paireddemo;
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 
@@ -50,21 +50,26 @@ public class PairedCalculatorTest {
 		public void nullAdd() {
 			try {
 			assertEquals(0.0,c.add(null),.001);
-			fail ("Expected a CalculatoException to be thrown");
-		} catch (CalculatorException m) {
-			System.out.println("Too many arguments");
 		}
+		catch (CalculatorException m) {
+			fail();
 		}
-		
-		@Test(expected = CalculatorException.class)
-		public void tooManyArguments() {
-			try {
-				assertEquals(28.3,c.add("12.9,15.3,0.1"),.001);
-				fail ("Expected an CalculatorException to be thrown");
-			} catch (CalculatorException m) {
-				System.out.println("Too many arguments");
-			}
 		}
 
+		
+		@Test
+		public void tooManyArguments() {
+			try {
+				assertEquals(46.6,c.add("12.9,15.3,0.1,18.3"),.001);
+				
+			} catch (CalculatorException m) {
+				m.printStackTrace();;
+			}
+		}
+		/*public void badCharacters() {
+			try {
+				assertEquals(28.2,c.add())
+			}
+		}*/
 	}
 
