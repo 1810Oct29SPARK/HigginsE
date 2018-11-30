@@ -71,4 +71,13 @@ public class CalculatorTest {
 		}
 	}
 	
+	@Test
+	public void nonNumericals() {
+		try {
+			assertEquals("numbers only plz", c.add("4.3,c.v"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

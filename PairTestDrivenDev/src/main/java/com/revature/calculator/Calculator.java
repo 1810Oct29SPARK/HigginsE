@@ -12,6 +12,10 @@ public class Calculator {
 		if (toAdd == null) {
 			sum = 0.0;
 		} else if (!toAdd.equals("")) {
+			
+			if (toAdd.contains("[A-Za-z!@#$%^&*:]+")) {
+				throw new CalculatorException("numbers only plz");
+			}
 
 			// split the string toAdd on a , delimiter
 			String[] numbers = toAdd.split(",");
@@ -33,12 +37,9 @@ public class Calculator {
 	class CalculatorException extends Exception {
 		public CalculatorException(String arg0) {
 			super();
-			System.out.println("more than 2 arguments");
+			//System.out.println("more than 2 arguments");
 		}
 
-//		public CalculatorException(Throwable arg0, Throwable arg1, Throwable arg2) {
-//			super(arg0);
-//		}
 	}
 
 }
