@@ -2,7 +2,7 @@ package com.revature.calculator;
 
 public class Calculator {
 
-	public Calculator() {
+	public Calculator() throws Exception  {
 	}
 
 	public Double add(String toAdd) {
@@ -15,16 +15,27 @@ public class Calculator {
 			for (String number : numbers) { // augmented for loop whaaaa
 				// parse the values as Doubles
 				sum += Double.parseDouble(number);
-				if (numbers.length > 2) {
-					try {
-						
-					}
-				}
+//				try {
+//					System.out.println("success");
+//				} catch (CalculatorException ce) {
+//					ce.printStackTrace();
+//				}
 			}
+
 		}
 
 		// return their sum
 		return sum;
+	}
+
+	public class CalculatorException extends Exception {
+		public CalculatorException(String arg0, String arg1, String arg2) {
+			super();
+			System.out.println("more than 2 arguments");
+		}
+		public CalculatorException(Throwable arg0, Throwable arg1, Throwable arg2) {
+			super(arg0);
+		}
 	}
 
 }

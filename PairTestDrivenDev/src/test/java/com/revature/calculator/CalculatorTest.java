@@ -6,12 +6,14 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.*;
+
 public class CalculatorTest {
 	
 	private Calculator c;
 	
 	@Before
-	public void setCalculator() {
+	public void setCalculator() throws Exception {
 		this.c = new Calculator();
 	}
 	
@@ -46,7 +48,7 @@ public class CalculatorTest {
 	
 	@Test
 	public void moreThanTwoArguments() {
-		assertEquals(48.8, c.add("10.1,20.3,18.4"), .001);
+		assertEquals("more than 2 arguments", c.add("4.5,5.4,6.7"));
 	}
 	
 }
