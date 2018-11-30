@@ -1,5 +1,7 @@
 package com.revature.calculator;
 
+//import com.revature.transport.MaintenanceException;
+
 public class Calculator {
 
 	public Calculator() {
@@ -18,23 +20,25 @@ public class Calculator {
 				sum += Double.parseDouble(number);
 
 				// return their sum
+				if (numbers.length > 2) {
+					throw new CalculatorException("more than 2 arguments");
+				}
 			}
 		}
-		//if (numbers > 2) 
 		
 		return sum;
 
 	}
 
 	class CalculatorException extends Exception {
-		public CalculatorException(String arg0, String arg1, String arg2) {
+		public CalculatorException(String arg0) {
 			super();
 			System.out.println("more than 2 arguments");
 		}
 
-		public CalculatorException(Throwable arg0, Throwable arg1, Throwable arg2) {
-			super(arg0);
-		}
+//		public CalculatorException(Throwable arg0, Throwable arg1, Throwable arg2) {
+//			super(arg0);
+//		}
 	}
 
 }
