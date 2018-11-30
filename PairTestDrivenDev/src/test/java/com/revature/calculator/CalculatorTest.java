@@ -1,14 +1,18 @@
 package com.revature.calculator;
 
 import static org.junit.Assert.*;
+import org.junit.rules.*;
 
-import org.junit.Before;
-import org.junit.Test;
 
-public class CalculatorTest {
+import org.junit.*;
+
+public class CalculatorTest{
 
 	private Calculator c;
-
+	
+	@Rule
+	public ExpectedException expectedException = ExpectedException.none();
+	
 	@Before
 	public void setCalculator() {
 		this.c = new Calculator();
@@ -29,14 +33,48 @@ public class CalculatorTest {
 	 * throws CalculatorException 
 	 */
 
+
+	
 	@Test
 	public void emptyStringReturnsZero() {
-		assertEquals(0, c.add(""), .001); // floating-point assertions require an offset
+		try {
+			assertEquals(0, c.add(""), .001);
+		} catch (CalculatorException e) {
+			
+			e.printStackTrace();
+		} // floating-point assertions require an offset
 	}
 	
 	@Test
 	public void twoNumbersReturnsSum() {
-		assertEquals(28.2,c.add("12.9,15.3"),.001);
+		try {
+			assertEquals(28.2,c.add("12.9,15.3"),.001);
+		} catch (CalculatorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
+	@Test
+	public void nullsReturnZero() {
+		try {
+			assertEquals(0,c.add(null),.001);
+		} catch (CalculatorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test //(expected = CalculatorException.class)
+	public void moreThanTwo() {
+		expectedException.expect(CalculatorException.class);
+		c.add("2.4,2.6,5.0");
+	}
+	
+	@Test
+	public void incorrectChars()
+	{
+		expectedException.expect(CalculatorException.class);
+		c.add("2.4a,!2.6");
+	}
 }
