@@ -28,21 +28,58 @@ public class CalculatorTest {
 	 * 5. calling add() with incorrect characters (anything but , and Doubles)
 	 * throws CalculatorException 
 	 */
-
+	
 	@Test
 	public void emptyStringReturnsZero() {
-		assertEquals(0.0, c.add(""), .001); // floating-point assertions require an offset
+		try {
+			assertEquals(0.0, c.add(""), .001);
+		} catch (CalculatorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail();
+		} // floating-point assertions require an offset
 	}
 	
 	@Test
 	public void twoNumbersReturnsSum() {
-		assertEquals(28.2,c.add("12.9,15.3"),.001);
+		try {
+			assertEquals(28.2,c.add("12.9,15.3"),.001);
+		} catch (CalculatorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail();
+		}
 		
 	}
 	
 	@Test
 	public void nullReturnsZero() {
-		assertEquals(0.0, c.add(null),.001);
+		try {
+			assertEquals(0.0, c.add(null),.001);
+		} catch (CalculatorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail();
+		}
+	}
+	
+	@Test
+	public void tooManyArgues() {
+        try {
+            assertEquals(28.3,c.add("12.9,15.3,0.1"),.001);
+        } catch (CalculatorException m) {
+            m.printStackTrace();
+        }
+      
+	}
+	
+	@Test
+	public void wrongCharacters() {
+		try {
+			c.add("44,55,@");
+		} catch (CalculatorException m) {
+			m.printStackTrace();
+		}
 	}
 
 }

@@ -7,19 +7,31 @@ public class Calculator {
 
 	public Double add(String toAdd) throws CalculatorException {
 		double sum = 0.0;
-		if(toAdd==null) {
-			
+		if (toAdd == null) {
+
 			return 0.0;
 		}
+
 		if (!toAdd.equals("")) {
 			// split the string toAdd on a , delimiter
 			String[] numbers = toAdd.split(",");
-			if(numbers.length>=2) {
-				throw new CalculatorException("too many args");
-			}
+//			for (String number : numbers) {
+//				if (number == "%"|| number== "@"|| number=="$") {
+//					throw new CalculatorException("incorrect characters");
+//				}
+//			}
+//			if(numbers.length>=2) {
+//				throw new CalculatorException("too many args");
+//			}
 			for (String number : numbers) {
 				// parse the values as Doubles
-				sum += Double.parseDouble(number);
+
+				try {
+					sum += Double.parseDouble(number);
+
+				} catch (CalculatorException m) {
+					throw new CalculatorException();
+				}
 			}
 
 			// return their sum
