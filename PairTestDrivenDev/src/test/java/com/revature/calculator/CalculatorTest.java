@@ -33,22 +33,42 @@ public class CalculatorTest {
 	
 	@Test
 	public void emptyStringReturnsZero() {
-		assertEquals(0, c.add(""), .001); //floating-point assertions require an offset
+		try {
+			assertEquals(0, c.add(""), .001);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} //floating-point assertions require an offset
 	}
 	
 	@Test
 	public void twoNumbersReturnsSum() {
-		assertEquals(28.2, c.add("12.9,15.3"), .001);
+		try {
+			assertEquals(28.2, c.add("12.9,15.3"), .001);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
 	public void nullReturnsZero() {
-		assertEquals(0, c.add(null), .001);
+		try {
+			assertEquals(0, c.add(null), .001);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
 	public void moreThanTwoArguments() {
-		assertEquals("more than 2 arguments", c.add("4.5,5.4,6.7"));
+		try {
+			assertEquals("more than 2 arguments", c.add("4.5,5.4,6.7"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
