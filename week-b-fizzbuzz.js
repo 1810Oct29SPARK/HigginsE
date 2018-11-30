@@ -116,23 +116,21 @@ function fizzBuzz4(m,n,numbers,terms){
     
     }   else {
 
-            for (i=lowNum; i<(highNum+ 1); i++){
-                
+            for (i=lowNum; i<(highNum + 1); i++){
                 num = i;
-                
-                console.log(i);
-                
+                console.log(i); 
+            
                 for ( y = 0 ; y < (numArr.length +1) ; y ++){
                     
                     if (num % numArr[y] == 0 && num != 0){
                         console.log(termArr[y]);
                     }
                 } 
-
+                
             }
     
     }
   
 }
-
+ 
 
