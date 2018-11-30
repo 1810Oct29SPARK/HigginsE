@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+
 public class CalculatorTest {
 
 	private Calculator c;
@@ -28,15 +29,29 @@ public class CalculatorTest {
 	 * 5. calling add() with incorrect characters (anything but , and Doubles)
 	 * throws CalculatorException 
 	 */
-
+	
 	@Test
-	public void emptyStringReturnsZero() {
+	public void emptyStringReturnsZero() throws CalculatorException {
 		assertEquals(0, c.add(""), .001); // floating-point assertions require an offset
 	}
 	
 	@Test
-	public void twoNumbersReturnsSum() {
+	public void twoNumbersReturnsSum() throws CalculatorException {
 		assertEquals(28.2,c.add("12.9,15.3"),.001);
 	}
-
+	
+	@Test
+	public void nullReturnsZero() throws CalculatorException {
+		assertEquals(0, c.add(null), .001);
+	}
+	
+	@Test(expected = CalculatorException.class)
+	public void moreThanTwoInputs() throws CalculatorException{
+		c.add("2,4,6");
+	}
+	
+	@Test(expected = CalculatorException.class)
+	public void badCharacterInput() throws CalculatorException{
+		c.add("/,a");
+	}
 }
