@@ -19,10 +19,15 @@ function fizzBuzz1(){
             console.log("buzz");
         }
 
+<<<<<<< HEAD
         else {
             console.log(i);
         }
     }
+=======
+    console.log('fizzbuzz1');
+
+>>>>>>> a1e059113bf8cc7f622146397d6577f62db6df01
 }
 
 /*
@@ -63,7 +68,7 @@ function fizzBuzz2(m,n){
     Each multiple of both fizzNum and BuzzNum replaced with 'fizzbuzz'
     Validation that m <= n is a plus. 
 */
-function fizzBuzz4(m,n,fizzNum,buzzNum){
+function fizzBuzz3(m,n,fizzNum,buzzNum){
 
 }
 
@@ -76,7 +81,7 @@ function fizzBuzz4(m,n,fizzNum,buzzNum){
     Validation the m <= n is a plus. 
     The arrays may have any length, but validation that their length is the SAME is a plus. 
 */
-function fizzBuzz3(m,n,numbers,terms){
+function fizzBuzz4(m,n,numbers,terms){
 
 }
 
