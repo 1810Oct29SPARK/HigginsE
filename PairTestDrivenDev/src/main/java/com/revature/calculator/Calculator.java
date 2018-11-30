@@ -11,17 +11,23 @@ public class Calculator {
 			return 0.0;
 		}
 		
-		else if (!toAdd.equals("")) {
+		String[] numbers = toAdd.split(",");
+		System.out.println(numbers);
+		
+		
+		if (!toAdd.equals("")) {
 			// if input contains invalid characters 
-			String input = toAdd;
-			for (int i = 0; i < input.length; i++) {
-				if (input.charAt(i).matches(["\\^,.[0-9]"])) {
+			for (int i = 0; i < numbers.length; i++) {
+				String number = numbers[i];
+				if (!number.contains(".")) {
+					throw new CalculatorException("Not a double");
+				}
+				if (number.contains("[^0-9.]")) {
 					throw new CalculatorException("Invalid characters");
 				}
 			}
+		}
 			
-			// split the string toAdd on a , delimiter
-			String[] numbers = toAdd.split(",");
 			
 			
 			if (numbers.length > 2) {
@@ -30,7 +36,7 @@ public class Calculator {
 			// for each number if it contains anything other than commas or Doubles, throw Exception
 			
 			for (int i = 0; i < numbers.length; i++) {
-				for (int j = 0; j <num.length(); j++) { 
+				for (int j = 0; j <numbers.length; j++) { 
 					
 			}
 			for (String number : numbers) {
@@ -45,4 +51,4 @@ public class Calculator {
 		return sum;
 	}
 	
-	}}
+	}

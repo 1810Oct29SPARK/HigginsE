@@ -47,7 +47,7 @@ public class CalculatorTest {
 	@Test
 	public void moreThanTwoArguments() {
 		try {
-			c.add("15.0, 25.2, 19.7");
+			c.add("15.0, 25.2, 19.7, 28.9");
 			fail("No exception thrown");
 		} catch (CalculatorException expectedException) {
 		}
@@ -55,7 +55,12 @@ public class CalculatorTest {
 	
 	@Test
 	public void incorrectCharacters() {
-		
+		try {
+			c.add("15.0, a, . , `, b, 2.2");
+			fail("No exception thrown");
+		}catch (CalculatorException expectedException) {
+			
+		}
 	}
 	
 
