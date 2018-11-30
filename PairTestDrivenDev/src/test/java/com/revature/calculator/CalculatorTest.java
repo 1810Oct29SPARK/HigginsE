@@ -75,6 +75,14 @@ public class CalculatorTest {
 		}
 	}
 	
-	
+	@Test
+	public void incorrectCharacters() {
+		try {
+			assertEquals("invalid characters present", c.add("four,35"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // floating-point assertions require an offset
+	}
 
 }

@@ -1,5 +1,8 @@
 package com.revature.calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Calculator {
 
 	public Calculator() {
@@ -7,6 +10,8 @@ public class Calculator {
 
 	public Double add(String toAdd) throws CalculatorException {
 		Double sum = 0.0;
+		List<String> v = new ArrayList<String>();
+		v.add(",");
 		
 		if (toAdd == null) {
 			return 0.0;
@@ -17,7 +22,11 @@ public class Calculator {
 			String[] numbers = toAdd.split(",");
 			for (String number : numbers) {
 				// parse the values as Doubles
-				sum += Double.parseDouble(number);
+				try {
+					sum += Double.parseDouble(number);
+				}catch (NumberFormatException e) {
+					throw new CalculatorException("invalid characters present");
+				}
 			}
 			
 			if (numbers.length > 2) {
