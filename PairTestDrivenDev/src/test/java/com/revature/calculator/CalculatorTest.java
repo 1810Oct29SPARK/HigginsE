@@ -31,12 +31,18 @@ public class CalculatorTest {
 
 	@Test
 	public void emptyStringReturnsZero() {
-		assertEquals(0, c.add(""), .001); // floating-point assertions require an offset
+		assertEquals(0.0, c.add(""), .001); // floating-point assertions require an offset
 	}
 	
 	@Test
 	public void twoNumbersReturnsSum() {
 		assertEquals(28.2,c.add("12.9,15.3"),.001);
+		
+	}
+	
+	@Test
+	public void nullReturnsZero() {
+		assertEquals(0.0, c.add(null),.001);
 	}
 
 }
