@@ -1,7 +1,6 @@
 package com.revature.calculator;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class Calculator {
 
@@ -17,15 +16,18 @@ public class Calculator {
 			// split the string toAdd on a , delimiter
 			String[] numbers = toAdd.split(",");
 			//throw an exception if there are too many arguments
-			Pattern p = Pattern.compile("[0-9]|.");
-			Matcher m = p.matcher(toAdd);
 			if (numbers.length > 2) {
 				throw new CalculatorException("Too many arguments!");
-			}else if (m.find() == false) { //regular expression catching numbers and the decimal point
-				throw new CalculatorException("message");
 			}
 			
 			for (String number : numbers) {
+				for (int i = 0; i < number.length(); i++) {
+					if (Character.isDigit(number.charAt(i)) || number.indexOf('.') != -1) {
+						continue;
+					} else {
+						throw new CalculatorException("Invalid input detected!");
+					}
+				}
 				// parse the values as Doubles
 				sum += Double.parseDouble(number);
 			}
