@@ -108,6 +108,9 @@ public class DNACheck {
 							case 'A': recombinant[n]='T';
 							case 'C': recombinant[n]='G';
 							case 'G': recombinant[n]='C';
+							//this switch case doesn't work because you can replace C with A
+							//Oh I shoulda caught that.
+							//oh well. I'll work on it at home later.
 							}
 							if (recombinant[n]!=bank[banco].charAt(n)) {
 								indexes.add(n);
