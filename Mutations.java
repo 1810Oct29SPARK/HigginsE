@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Mutations {
 	
 	public static void main(String[] args) {
+		//setting the driver
 		int ans = minMutation();
 		System.out.println(ans);
 
@@ -13,9 +14,7 @@ public class Mutations {
 	public static int minMutation() {
 
 		// scanner input, assuming the same number of characters for start and end
-		// will give outofbounds if not
 		Scanner scan = new Scanner(System.in);
-		int input = 1;
 
 		String str = "";
 		System.out.print("start: ");
@@ -25,15 +24,17 @@ public class Mutations {
 		System.out.print("end: ");
 		ed = scan.nextLine();
 
-		// setting a bank
-		String[] bank = { "AACCGGTT", "AACCGGTA" };
+		//giving the gene bank
+		String[] bank = {"AACCGGTA", "AACCGCTA", "AAACGGTA"};
+		System.out.println("bank: " +bank);
 
-		// verifying the end is a proper gene in the bank
+		// verifying the end is a proper gene in the bank, default is false
 		boolean inBank = false;
 
 		// this loop checks if the the end is in the bank
 		for (int i = 0; i < bank.length; i++) {
 			if (bank[i].equals(ed)) {
+				//changes boolean to true
 				inBank = true;
 			}
 		}
@@ -45,9 +46,12 @@ public class Mutations {
 			// character to character because of charAt
 			// if it finds a difference, added to counter
 		} else {
+			//using a counter to keep up with mutation number
 			int count = 0;
 			for (int i = 0; i < str.length(); i++) {
+				//comparing the chars at indexs, if they are not equal
 				if (str.charAt(i) != ed.charAt(i)) {
+					//then add to the counter
 					count++;
 				}
 			}
