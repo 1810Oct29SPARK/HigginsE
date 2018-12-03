@@ -1,0 +1,52 @@
+package com.revature.demo;
+
+import static org.junit.Assert.fail;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Test;
+
+
+public class JUnitProcedureTest 
+{
+	/*
+	 * executes before all tests
+	 */
+	
+	@Before
+	public static void beforeTests()
+	{
+		
+	}
+	
+	@BeforeClass
+	public static void beforeAllTest()
+	{
+		
+	}
+	
+	@AfterClass
+	public static void afterAllTest()
+	{
+		System.out.println("in afterAllTests");
+	}
+	
+	@Test
+	public void testCase1()
+	{
+		System.out.println("in testCase1");
+	}
+	
+	@Test
+	public void testCase2()
+	{
+		System.out.println("in testCase2");
+		fail();
+	}
+	
+	
+
+}
