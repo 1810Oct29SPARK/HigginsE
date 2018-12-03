@@ -9,6 +9,7 @@ public class MinimumMutations {
 	
 	private List<String> geneBank;
 	
+	// Default setup
 	public MinimumMutations() {
 		geneBank = new ArrayList<String>();
 		geneBank.add("AACCGGTA");
@@ -17,6 +18,7 @@ public class MinimumMutations {
 		geneBank.add("GACCGGTT");
 	}
 	
+	// Setup gene bank with file
 	public MinimumMutations(String fileName) throws IOException {
 		geneBank = new ArrayList<String>();
 		
@@ -41,6 +43,7 @@ public class MinimumMutations {
 		fr.close();
 	}
 	
+	// Check if a StringBuilder gene is in the gene bank
 	public boolean isInBank(StringBuilder gene) {
 		String testGene = new String(gene);
 		for (int i = 0; i < geneBank.size(); ++i) {
@@ -51,6 +54,7 @@ public class MinimumMutations {
 		return false;
 	}
 	
+	// Compare two StringBuilders
 	public boolean isEqual(StringBuilder str1, StringBuilder str2) {
 		
 		String strt1 = new String(str1);
@@ -74,7 +78,7 @@ public class MinimumMutations {
 			return 0;
 		}
 		
-		if (geneBank.indexOf(end) == -1) {
+		if (!isInBank(targetGene)) {
 			return -1;
 		}
 		
