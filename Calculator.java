@@ -1,5 +1,6 @@
 public class Calculator {
 
+
 	public double add(double arg0, double arg1)	{
 		double additionResult = arg0 + arg1;
 		return additionResult;
@@ -19,5 +20,5 @@ public class Calculator {
 		double divisionResult = arg0 / arg1;
 		return divisionResult;
 	}
-		
+
 }

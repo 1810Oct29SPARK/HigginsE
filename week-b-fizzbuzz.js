@@ -18,6 +18,8 @@ function fizzBuzz1(){
         }
     }
 
+    console.log('fizzbuzz1');
+
 }
 
 /*
@@ -56,10 +58,12 @@ function fizzBuzz2(m,n){
     Validation that m <= n is a plus. 
 */
 function fizzBuzz3(m,n,fizzNum,buzzNum){
+
     let lowerNum = m;
     let higherNum = n;
     let fizzy = fizzNum;
     let buzzy = buzzNum;
+
 
     if (lowerNum >= higherNum){
         console.log('error: invalid numbers')
@@ -88,6 +92,7 @@ function fizzBuzz3(m,n,fizzNum,buzzNum){
     The arrays may have any length, bu t validation that their length is the SAME is a plus. 
 */
 function fizzBuzz4(m,n,numbers,terms){
+
     if (isNaN(Number(m)) || isNaN(Number(n)) || m > n){
         console.log('invalid input');
         return;

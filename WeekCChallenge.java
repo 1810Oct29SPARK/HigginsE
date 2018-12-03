@@ -3,12 +3,16 @@ public class WeekCChallenge {
 	public static void main(String[] args){
 		
 		//1. create a new instance of the Calculator class
+
 		Calculator myCalculator = new Calculator();
+
+
 
 
 		//2. call each of Calculator's instance methods: add, subtract, multiply, and divide
 		// with arguments of your choice, assigning the result to the variables below
 		
+
 		double additionResult = myCalculator.add(5.2, 5.2);
 		double subtractionResult = myCalculator.subtract(5.2, 5.2);
 		double multiplicationResult = myCalculator.multiply(5.2, 5.2);
@@ -26,6 +30,7 @@ public class WeekCChallenge {
 		//4. implement the static fizzBuzz method in this class and call it from the main method
 	}
 	
+
 /* Couldn't get this to compile.
 
 	public static void fizzBuzz(int m, int n, int[] numbers, String[] terms){
@@ -46,4 +51,5 @@ public class WeekCChallenge {
 
 	}
 */
+
 }
