@@ -99,7 +99,7 @@ public String mutationChar = (mutation1 + mutation2 + mutation3 + mutation4 + mu
 	 *is the minimum number of mutations needed to mutate from "start" to 
 	 *"end".
 	 */
-	
+	//We are determining the chance of a frog being born as a mutant
 	//Now we determine the minimum number of mutations to get from the origin frog to the mutated frog
 	//Assuming the maximum amount of frogs that can be born to one parent in a lifetime is 
 	//according to LiveScience, a frog can lay up to 50,000 eggs in its lifetime
@@ -118,22 +118,24 @@ public String mutationChar = (mutation1 + mutation2 + mutation3 + mutation4 + mu
 	// Meaning each egg the frog has will be compared against 65,536
 	// the way we will do this is by generating a random number between 1 an 65,536
 	// if that random number is 1, then success! We have a mutant 3-eyed frog
-	while lifetimeEggs=(i>0);do
-	Random rand2 = new Random();
+	while lifetimeEggs=(i>0);
+	do 
+	rand2 = new Random();
 	// this will run the random number generator for the amount of times specified
 	// in rand1
 	int mutantChance = (rand2.nextInt(65536) + 1, (i--));
 	break;
 	system.out.println("The chance of having a mutated frog is" + (lifetimeEggs - i));
 	//continue determining the chance until i = 0
-	System.out.println("Mutant has been born");
+	System.out.println("Success! A mutant has been born");
 	return (i/lifetimeEggs);
 
+	do rand2 {
 	while lifetimeEggs = 0 < 1 {
-	}do rand2 { 
+	}
 	}
 	
-	//I think I really botched my logic here, but the gist of the idea is to dtermine 
+	//I think I really botched my logic here, but the gist of the idea is to determine 
 		if /*the start and end string are the same, return 0.*/ String.contentEquals(mutationChar) == starChar {
 			return 0;
 			return -1;
