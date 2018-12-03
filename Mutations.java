@@ -16,7 +16,7 @@ public class Mutations {
 	//things to consider for the future: dynamic bank, limit string input, fileIO
 	
 
-	public static int minMutation() throws FileNotFoundException {
+	public static int minMutation()  {
 
 		// scanner input, assuming the same number of characters for start and end
 		Scanner scan = new Scanner(System.in);
@@ -29,7 +29,7 @@ public class Mutations {
 		System.out.print("end: ");
 		ed = scan.nextLine();
 
-		//giving the gene bank, i know i need to rework this better ):
+		//giving the gene bank, need to give bigger pool
 		String[] bank = {"AACCGGTA", "AACCGCTA", "AAACGGTA"};
 		System.out.println("bank: " +bank);
 
@@ -65,8 +65,8 @@ public class Mutations {
 		}
 		
 		//fileio practice
-		  File textFile = new File("mutationstart.txt");
-		  try (Scanner scanner = new Scanner(textFile)) {
+		  //File textFile = new File("mutationstart.txt");
+		  //try (Scanner scanner = new Scanner(textFile)) {
 		
 
 	}
