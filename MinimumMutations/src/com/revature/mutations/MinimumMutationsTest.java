@@ -17,13 +17,13 @@ public class MinimumMutationsTest {
 			myMutationTrial = new MinimumMutations();
 		}
 		
-		// Sample mutation
 		System.out.println("\n==========Test Mutations==========\n");
+		// Sample mutation
 		System.out.println(myMutationTrial.tryMutate("AACCGGTT", "AAACGGTA"));
 		// Another Successful mutation
 		System.out.println(myMutationTrial.tryMutate("AACCGGTA", "AAACGATT"));
 		// Another Successful mutation
-		System.out.println(myMutationTrial.tryMutate("EGGGTTTT", "AAAAAAAA"));
+		System.out.println(myMutationTrial.tryMutate("GGGGTETT", "AAAAAAAA"));
 		// Same gene
 		System.out.println(myMutationTrial.tryMutate("AACCGGTA", "AACCGGTA"));
 		// Unsuccessful mutation
