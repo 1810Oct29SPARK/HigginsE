@@ -14,5 +14,4 @@ public class MinimumMutations extends Mutations{
 		str2 = scan.nextLine();
 		System.out.println(numOfMutations(str1, str2));
 	}
-	
 }
