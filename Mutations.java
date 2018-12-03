@@ -1,5 +1,7 @@
 package com.revature.example;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Mutations {
@@ -10,8 +12,11 @@ public class Mutations {
 		System.out.println(ans);
 
 	}
+	
+	//things to consider for the future: dynamic bank, limit string input, fileIO
+	
 
-	public static int minMutation() {
+	public static int minMutation() throws FileNotFoundException {
 
 		// scanner input, assuming the same number of characters for start and end
 		Scanner scan = new Scanner(System.in);
@@ -24,7 +29,7 @@ public class Mutations {
 		System.out.print("end: ");
 		ed = scan.nextLine();
 
-		//giving the gene bank
+		//giving the gene bank, i know i need to rework this better ):
 		String[] bank = {"AACCGGTA", "AACCGCTA", "AAACGGTA"};
 		System.out.println("bank: " +bank);
 
@@ -58,6 +63,11 @@ public class Mutations {
 			return count;
 
 		}
+		
+		//fileio practice
+		  File textFile = new File("mutationstart.txt");
+		  try (Scanner scanner = new Scanner(textFile)) {
+		
 
 	}
 
