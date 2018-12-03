@@ -1,0 +1,9 @@
+start: "AACCGGTT"
+end:   "AAACGGTA"
+bank: ["AACCGGTA", "AACCGCTA", "AAACGGTA"]
+start: "ATGCGGTT"
+end:   "ATGCGCTT"
+bank: ["ATGCGCTT", "AAGCGCTT", "AATGGCAT"]
+start: "ATGCGCTT"
+end:   "ATGCGCTT"
+bank: ["ATGCGCTT", "AAGCGCTT", "AATGGCAT"]
