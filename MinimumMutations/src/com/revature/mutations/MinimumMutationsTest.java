@@ -11,10 +11,18 @@ public class MinimumMutationsTest {
 		try {
 			myMutationTrial = new MinimumMutations("src/gene-bank.txt");
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("no bank found, initializing with default");
+			myMutationTrial = new MinimumMutations();
 		}
 		
-		System.out.println(myMutationTrial.tryMutate("AACCGGTT", "AAACGGTA"));
+		// Successful mutation
+		System.out.println(myMutationTrial.tryMutate("AACCGGTA", "AAACGATT"));
+		// Same gene
+		System.out.println(myMutationTrial.tryMutate("AACCGGTA", "AACCGGTA"));
+		// Unsuccessful mutation
+		System.out.println(myMutationTrial.tryMutate("AACCGGTA", "ATACTGTA"));
+		// Invalid Gene
+		System.out.println(myMutationTrial.tryMutate("AACCGGTA", "AACCGGEA"));
 
 	}
 

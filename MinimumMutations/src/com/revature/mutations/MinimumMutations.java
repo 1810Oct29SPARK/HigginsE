@@ -1,6 +1,5 @@
 package com.revature.mutations;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -83,15 +82,17 @@ public class MinimumMutations {
 		int mutateCount = 0;
 		
 		while (!isEqual(currentGene, targetGene) && flag) {
-			for (int i = 0; i < currentGene.length(); ++i) {
-				if (currentGene.charAt(i) != end.charAt(i)) {
+			for (int i = 0; i <= currentGene.length(); ++i) {
+				if (i == currentGene.length()) {
+					flag = false;
+					mutateCount = -1;
+					break;
+				}
+				if (currentGene.charAt(i) != targetGene.charAt(i)) {
 					// Try mutate
 					char temp = currentGene.charAt(i);
 					currentGene.setCharAt(i, targetGene.charAt(i));
 					if (!isInBank(currentGene)) {
-						if (i == currentGene.length()) {
-							flag = false;
-						}
 						currentGene.setCharAt(i, temp);
 						continue;
 					}
