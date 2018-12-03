@@ -5,6 +5,7 @@
     Each multiple of 5 replaced with 'buzz'
     Each multiple of both 3 and 5 replaced with 'fizzbuzz'
 */
+<<<<<<< HEAD
  function fizzBuzz1(){
     for(var i=1;i<101;i++){
 		if(i%5 === 0 && i%3 === 0){
@@ -17,6 +18,12 @@
 			console.log(i);
 		}
 	}
+=======
+function fizzBuzz1(){
+
+    console.log('fizzbuzz1');
+
+>>>>>>> d5ab77b06b4e69932adc1c120d6fe359f013e157
 }
 
 /*
@@ -55,7 +62,7 @@ function fizzBuzz2(m,n){
     Each multiple of both fizzNum and BuzzNum replaced with 'fizzbuzz'
     Validation that m <= n is a plus. 
 */
-function fizzBuzz4(m,n,fizzNum,buzzNum){
+function fizzBuzz3(m,n,fizzNum,buzzNum){
 
 }
 
@@ -68,7 +75,7 @@ function fizzBuzz4(m,n,fizzNum,buzzNum){
     Validation the m <= n is a plus. 
     The arrays may have any length, but validation that their length is the SAME is a plus. 
 */
-function fizzBuzz3(m,n,numbers,terms){
+function fizzBuzz4(m,n,numbers,terms){
 
 }
 
