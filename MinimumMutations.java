@@ -5,6 +5,11 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class MinimumMutations extends Driver implements Serializable, CharSequence {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	static Scanner scan = new Scanner(System.in);
 
 	/*
@@ -104,7 +109,7 @@ public String mutationChar = (mutation1 + mutation2 + mutation3 + mutation4 + mu
 	//Assuming the maximum amount of frogs that can be born to one parent in a lifetime is 
 	//according to LiveScience, a frog can lay up to 50,000 eggs in its lifetime
 	Random rand1 = new Random();
-	int lifetimeEggs = rand1.nextInt(50000) + 1;
+	int lifetimeEggs = (rand1.nextInt(50000) + 1)
 
 	// The above determines a random amount of eggs between 1 an 50,000
 
@@ -118,7 +123,7 @@ public String mutationChar = (mutation1 + mutation2 + mutation3 + mutation4 + mu
 	// Meaning each egg the frog has will be compared against 65,536
 	// the way we will do this is by generating a random number between 1 an 65,536
 	// if that random number is 1, then success! We have a mutant 3-eyed frog
-	while lifetimeEggs=(i>0);
+	for lifetimeEggs(i>0);
 	do 
 	rand2 = new Random();
 	// this will run the random number generator for the amount of times specified
@@ -130,8 +135,8 @@ public String mutationChar = (mutation1 + mutation2 + mutation3 + mutation4 + mu
 	System.out.println("Success! A mutant has been born");
 	return (i/lifetimeEggs);
 
-	do rand2 {
 	while lifetimeEggs = 0 < 1 {
+	do rand2 {
 	}
 	}
 	
