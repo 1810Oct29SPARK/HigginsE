@@ -3,6 +3,7 @@ public class WeekCChallenge {
 	public static void main(String[] args){
 		
 		//1. create a new instance of the Calculator class
+
 		Calculator calcOne = new Calculator();
 
 		//2. call each of Calculator's instance methods: add, subtract, multiply, and divide
@@ -15,10 +16,9 @@ public class WeekCChallenge {
 		subtractionResult = calcOne.subract(8, 6);
 		System.out.println ("8 minus 6 is: " + subtractionResult);
 
-		double multiplicationResult;
-		double divisionResult;
 
 		//3. print the value of each of these variables to the console with a descriptive message
+
 		System.out.println ("The sum of 3 and 5 is: " + additionResult);
 
 		//4. implement the static fizzBuzz method in this class and call it from the main method
@@ -49,3 +49,4 @@ public class WeekCChallenge {
 		}
 	}
 	*/
+

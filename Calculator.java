@@ -16,3 +16,4 @@ public class Calculator {
 		return arg0 / arg1;
 	}
 }
+

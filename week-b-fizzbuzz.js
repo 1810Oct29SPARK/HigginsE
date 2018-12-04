@@ -19,7 +19,6 @@ function fizzBuzz1(){
             console.log(i);
         }
     }
-    
 }
 
 /*
@@ -54,8 +53,6 @@ function fizzBuzz2(m,n){
     Validation that m <= n is a plus. 
 */
 function fizzBuzz3(m,n,fizzNum,buzzNum){
-    var fizzNum = fizzNum;
-    var buzzNum = buzzNum;
 
     for (i = m; i <= n; i++) {
         if (i % fizzNum == 0 && i % buzzNum == 0) {
