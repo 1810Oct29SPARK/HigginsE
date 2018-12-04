@@ -1,0 +1,27 @@
+package TroyMain;
+
+import com.revature.eval.java.core.EvaluationService;
+
+public class TroyMain{
+
+	public static void main(String[] args) {
+		
+		acronym("Portable Network Graphics");
+		acronym("First In, First Out");
+		acronym("GNU Image Manipulation Program");
+		acronym("Complementary metal-oxide semiconductor");
+		
+		
+	}
+	public static void acronym(String phrase) {
+		// TODO Write an implementation for this method declaration
+		char[] acr = new char[phrase.length()];
+		
+		for(int i = 0 ; i < phrase.length(); i++) {
+			System.out.print(phrase.charAt(i));
+		}
+		System.out.println();
+			
+	}
+
+}
