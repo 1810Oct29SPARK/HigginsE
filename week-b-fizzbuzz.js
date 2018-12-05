@@ -6,6 +6,7 @@
     Each multiple of both 3 and 5 replaced with 'fizzbuzz'
 */
 function fizzBuzz1(){
+<<<<<<< HEAD
     for (i = 1; i <= 100; i++) {
         if (i % 3 == 0 && i % 5 == 0) {
             console.log("fizzbuzz");
@@ -19,6 +20,9 @@ function fizzBuzz1(){
             console.log(i);
         }
     }
+=======
+   console.log('fizzbuzz1');
+>>>>>>> 0d7bb8e65486f4fa7cec16d6ddfe2802d8ddeb23
 }
 
 /*
