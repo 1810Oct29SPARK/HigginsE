@@ -1,7 +1,12 @@
 package com.revature.dao;
 
+import java.util.List;
+
+import com.revature.beans.User;
+
 public interface UserDAO {
 	
-	//define necessary CRUD methods and build an implementing class in this package
-
+	    public List<User> getUsers();
+	    public User getUserById(int id);
+	    public void insertUser(int id, String lastName, String firstName );
 }
