@@ -23,7 +23,14 @@ public class AccountDAOImpl implements AccountDAO {
 				"FROM ACCOUNT" +
 					"INNER JOIN USERID" +
 				"ON USER_ID" ;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return al;
 	}
 
 	@Override
@@ -55,43 +62,26 @@ public class AccountDAOImpl implements AccountDAO {
 	}
 
 	@Override
-	public double depositFunds(int user_id, int acc_id, double balance) throws SQLException {
+	public double depositFunds(int user_id, int acc_id, double balance) {
 		String query = "SELECT * FROM ACCOUNT";
 		Connection con;
 		try {
-			con = ConnectionUtil.getConnection(filename);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		con = ConnectionUtil.getConnection(filename);
 		Statement stmt;
-		try {
-			stmt = con.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			ResultSet rs = stmt.executeQuery(query);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
 		PreparedStatement depfunds;
-		try {
+	
 			depfunds = con.prepareStatement("insert into account values(?,?,?)");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		  
+		
 		depfunds.setInt(1, acc_id);
 		depfunds.setDouble(2, balance);
 		depfunds.setInt(3, user_id);
 		depfunds.executeUpdate();
-		return 0;
+		} finally {
+		return 0.0;
+		}
 	}
 
 	@Override
