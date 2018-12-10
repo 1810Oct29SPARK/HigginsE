@@ -23,8 +23,7 @@ public class BankUtil implements AccountDAO, UserDAO {
 	public List<Account> viewAccountsByUser(User u){
 		List<Account> thisAccount = new ArrayList<>();
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			// write a join which unifies Bear, Cave, and BearType into a ResultSet
-			// map the ResultSet's entries onto a list of Bear objects
+
 			String sql = "SELECT * FROM BANK_ACCOUNTS " + 
 					"INNER JOIN BANK_USER ON BANK_USER.USER_ID = BANK_ACCOUNTS.USER_ID " + 
 					"WHERE BANK_USER.USER_ID = ?";
@@ -54,8 +53,7 @@ public class BankUtil implements AccountDAO, UserDAO {
 		account.setBalance(balance);
 		
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			// write a join which unifies Bear, Cave, and BearType into a ResultSet
-			// map the ResultSet's entries onto a list of Bear objects
+
 			String sql = "UPDATE BANK_ACCOUNTS " + 
 			"SET BALANCE = ? " +
 			"WHERE ACCOUNT_ID = ?";
@@ -77,8 +75,7 @@ public class BankUtil implements AccountDAO, UserDAO {
 		account.setBalance(balance);
 		
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			// write a join which unifies Bear, Cave, and BearType into a ResultSet
-			// map the ResultSet's entries onto a list of Bear objects
+
 			String sql = "UPDATE BANK_ACCOUNTS " + 
 			"SET BALANCE = ? " +
 			"WHERE ACCOUNT_ID = ?";
