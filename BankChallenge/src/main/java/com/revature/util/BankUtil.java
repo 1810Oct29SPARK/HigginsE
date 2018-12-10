@@ -55,9 +55,11 @@ try (Connection con = ConnectionUtil.getConnection(filename)) {
 			String sql = "SELECT * " +
 					"FROM ACCOUNTINFO " +
 					"INNER JOIN BANKUSER " +
-					"ON ACCOUNTINFO.USERID = " + u.getId() +" AND BANKUSER.USERID = " + u.getId();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+					"ON ACCOUNTINFO.USERID = ? AND BANKUSER.USERID = ?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, u.getId());
+			stmt.setInt(2, u.getId());
+			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				int accountId = rs.getInt("ACCOUNTID");
 				long accountNumber = rs.getLong("ACCOUNTNUMBER");

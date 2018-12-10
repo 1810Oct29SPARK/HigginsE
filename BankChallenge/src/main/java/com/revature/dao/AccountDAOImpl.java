@@ -2,6 +2,7 @@ package com.revature.dao;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,9 +20,10 @@ public class AccountDAOImpl implements AccountDAO {
 		Account account = null;
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
 			
-			String sql = "SELECT * FROM ACCOUNTINFO INNER JOIN BANKUSER ON ACCOUNTID = 1 AND BANKUSER.USERID = ACCOUNTINFO.USERID";
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			String sql = "SELECT * FROM ACCOUNTINFO INNER JOIN BANKUSER ON ACCOUNTID = ? AND BANKUSER.USERID = ACCOUNTINFO.USERID";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
 				int userId = rs.getInt("USERID");
 				String firstName = rs.getString("FIRSTNAME");

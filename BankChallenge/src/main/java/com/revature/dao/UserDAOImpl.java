@@ -22,9 +22,10 @@ public class UserDAOImpl implements UserDAO{
 		User user = null;
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
 			
-			String sql = "SELECT * FROM BANKUSER WHERE USERID = 1";
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			String sql = "SELECT * FROM BANKUSER WHERE USERID = ?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
 				int userId = rs.getInt("USERID");
 				String firstName = rs.getString("FIRSTNAME");
