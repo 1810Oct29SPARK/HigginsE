@@ -22,7 +22,7 @@ public class AccountDAOImpl implements AccountDAO {
 	@Override
 	public List<Account> getAccountsByUserId(int userId) throws SQLException {
 		
-		List<Account> accList = new ArrayList<>();
+		List<Account> accountList = new ArrayList<>();
 		
 		String sqlStmt = "SELECT ACCOUNTID AS AID, ACCOUNTNUMBER AS ANUM, ACCOUNTNAME AS AN, BALANCE AS BAL, FIRSTNAME AS FN, LASTNAME AS LN\r\n" + 
 				"FROM ACCOUNT A\r\n" + 
@@ -31,18 +31,18 @@ public class AccountDAOImpl implements AccountDAO {
 		
 		PreparedStatement pstmt = this.conn.prepareStatement(sqlStmt);
 		
-		pstmt.setInt(1,userId); 
+		pstmt.setInt(1,userId);
 		
-		ResultSet rs = pstmt.executeQuery(); 
+		ResultSet rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
 			User u = new User(userId, rs.getString("FN"), rs.getString("LN"));
 			Account a = new Account(rs.getInt("AID"), rs.getShort("ANUM"),u, rs.getString("AN"), rs.getDouble("BAL"));
-			
-			accList.add(a);
+			accountList.add(a);
 		}
 
-		return accList; 
+		return accountList;
+		
 	}
 
 	@Override
@@ -124,7 +124,7 @@ public class AccountDAOImpl implements AccountDAO {
 		if (amount > 0) {
 			double newBal = this.getAccountBalanceById(accountId) - amount;
 			
-			if (newBal>=0) {
+			if (newBal >= 0) {
 				pstmt.setDouble(1, newBal);
 				pstmt.setInt(2, accountId);
 				if (pstmt.executeUpdate() == 1) {

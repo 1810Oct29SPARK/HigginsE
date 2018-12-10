@@ -34,25 +34,29 @@ public class GoToTheBank {
 		
 		// BankUtil testing cases
 		try {
-//			List<Account> accountList = bu.viewAccountsByUser(2);
-//			for (Account a: accountList) {
-//				System.out.println(a);
-//			}
+			
+			List<Account> accountList = bu.viewAccountsByUser(2);
+			for (Account a: accountList) {
+				System.out.println(a);
+			}
 			
 //			double newBal = bu.depositMoney(1, -500.0);
-			double newBal = bu.withdrawMoney(1, 500.0);
-			if (newBal != -1.0) {
-				System.out.println("your new balance: " + newBal);
-			}
-			else {
-				System.out.println("transaction failed");
-			}
+//			double newBal = bu.withdrawMoney(1, 500.0);
+//			if (newBal != -1.0) {
+//				System.out.println("your new balance: " + newBal);
+//			}
+//			else {
+//				System.out.println("transaction failed");
+//			}
+			
 		}
-		catch (SQLException e1) {
-			e1.printStackTrace();
+		catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 		System.out.println("");
+		
+		// Testing individual dao implementations
 		
 //		User user1 = new User(1, "Eddy", "Soma");
 //		User user2 = new User(2, "Danny", "Trevino");
@@ -62,24 +66,24 @@ public class GoToTheBank {
 //		Account acc2 = new Account(7, (short)1007, new User(2), "dta2", 1500.0);
 //		Account acc3 = new Account(8, (short)1008, new User(2), "dta4", 2500.0);
 		
-		try {
+//		try {
 //			System.out.println(ud.addUser(user3) + " rows inserted");
-			System.out.println(ud.getUserById(2));
+//			System.out.println(ud.getUserById(2));
 //			System.out.println(ud.updateUser(3, "Demo", "Dummy") + " rows updated");
 //			System.out.println(ud.deleteUser(3) + " rows deleted");
-			
+//			
 //			List<User> userList = ud.getAllUsers();
 //			for (User u: userList) {
 //				System.out.println(u);
 //			}
-			
+//			
 //			System.out.println(ad.addAccount(acc3) + " account added");
 //			System.out.println(ad.updateAccount(4, "dta3") + " account updated");
 //			System.out.println(ad.deleteAccount(5) + " account deleted");
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
+//		}
+//		catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 
 	}
 	
