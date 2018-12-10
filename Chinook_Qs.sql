@@ -242,18 +242,21 @@ FROM INVOICE.CHINOOK
 INNER JOIN CUSTOMER
 ON INVOICE.CUSTOMERID = CUSTOMER.CUSTOMERID;
 
+--7.2
 --Task – Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
 SELECT INVOICE.INVOICEID, INVOICE.TOTAL, CUSTOMER.CUSTOMERID, CUSTOMER.FIRSTNAME, CUSTOMER.LASTNAME
 FROM INVOICE.CHINOOK
 OUTER JOIN CUSTOMER.CHINOOK
 ON INVOICE.CUSTOMERID = CUSTOMER.CUSTOMERID;
 
+--7.3
 --Task – Create a right join that joins album and artist specifying artist name and title.
 SELECT ALBUM.TITLE, ARTIST.NAME
 FROM ALBUM.CHINOOK
 RIGHT JOIN ARTIST.CHINOOK
 ON ALBUM.ARTISTID = ARTIST.ARTISTID;
 
+--7.4
 --Task – Create a cross join that joins album and artist and sorts by artist name in ascending order.
 SELECT ALBUM.TITLE, ARTIST.NAME
 FROM ALBUM.CHINOOK
@@ -261,6 +264,7 @@ CROSS JOIN ARTIST.CHINOOK
 ON ALBUM.ARTISTID = ARTIST.ARTISTID
 ORDER BY ARTIST.NAME;
 
+--7.5
 --Task – Perform a self-join on the employee table, joining on the reportsto column.
 SELECT FIRSTNAME, LASTNAME, EMPLOYEEID, REPORTSTO
 FROM EMPLOYEE.CHINOOK
