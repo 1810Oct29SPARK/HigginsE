@@ -15,7 +15,6 @@ import com.revature.dao.UserDAO;
 
 public class BankUtil implements AccountDAO, UserDAO {
 	
-	//include DAOs as instance variables 
 	private AccountDAO ad;
 	private UserDAO ud;
 	private static final String filename = "connection.properties";
