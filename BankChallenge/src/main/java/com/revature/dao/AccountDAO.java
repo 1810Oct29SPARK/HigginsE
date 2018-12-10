@@ -1,6 +1,10 @@
 package com.revature.dao;
 
-public interface AccountDAO {
+import java.util.List;
 
-	//define necessary CRUD methods and build an implementing class in this package
+import com.revature.beans.Account;
+
+public interface AccountDAO {
+    public List<Account> getAccount(int i);
+    public Account getAccountById(int id);
 }
