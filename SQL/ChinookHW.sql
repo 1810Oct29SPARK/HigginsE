@@ -1,7 +1,7 @@
 -- HOMEWORK
 
--- 2. SQL QUERIES
 
+-- 2. SQL QUERIES
 
 -- 2.1 SELECT
 -- Task – Select all records from the Employee table.
@@ -124,43 +124,159 @@ WHERE BIRTHDATE > DATE '1968-12-31';
 -- 4. STORED PROCEDURES
 
 -- 4.1 BASIC STORED PROCEDURE
+-- Task – Create a stored procedure that selects the first and last names of all the employees.
+CREATE OR REPLACE PROCEDURE SelectEmployees
+AS
+    FIRST_NAME VARCHAR2(20);
+    LAST_NAME VARCHAR2(20);
+    CURSOR CURSOR1 IS
+    SELECT FIRSTNAME, LASTNAME INTO FIRST_NAME, LAST_NAME FROM EMPLOYEE;
+BEGIN
+OPEN CURSOR1;
 
+LOOP
+   FETCH CURSOR1 INTO FIRST_NAME, LAST_NAME;
+   EXIT WHEN CURSOR1%NOTFOUND;
+   DBMS_OUTPUT.PUT_LINE(FIRST_NAME || ' ' || LAST_NAME);
+END LOOP;
+   CLOSE CURSOR1;
+END;
+
+EXECUTE SelectEmployees;
+SET SERVEROUTPUT ON;   
 
 
 -- 4.2 STORED PROCEDURE INPUT PARAMETERS
+-- Task – Create a stored procedure that updates the personal information of an employee.
+CREATE OR REPLACE PROCEDURE UPDATE_EMPLOYEE(E_ID IN NUMBER)
+AS
+BEGIN
+UPDATE EMPLOYEE SET FIRSTNAME='Alex', LASTNAME='Lora', TITLE='Assistant Manager'
+WHERE EMPLOYEE.EMPLOYEEID = E_ID;
+END;
+BEGIN
+UPDATE_EMPLOYEE(6);
+END;
 
+-- Task – Create a stored procedure that returns the managers of an employee.
+CREATE OR REPLACE PROCEDURE RETURNS_EMPLOYEE(E_ID IN NUMBER)
+AS
+BEGIN
+UPDATE EMPLOYEE SET FIRSTNAME='Alex', LASTNAME='Lora', TITLE='Assistant Manager'
+WHERE EMPLOYEE.EMPLOYEEID = E_ID;
+END;
+BEGIN
+UPDATE_EMPLOYEE(6);
+END;
 
 
 -- 4.3 STORED PROCEDURE OUTPUT PARAMETERS
+-- Task – Create a stored procedure that returns the name and company of a customer.
+CREATE OR REPLACE PROCEDURE NAME_COMPANY_CUSTOMER(COMPANY_OF_CUSTOMER OUT VARCHAR2, NAME_OF_CUSTOMER OUT VARCHAR2, CUSTOMER_ID IN NUMBER)
+IS
+COMPANY_NAME VARCHAR2(1000);
+CUSTOMER_FIRST VARCHAR2(1000);
+CUSTOMER_LAST VARCHAR2(1000);
+BEGIN
+    SELECT C.FIRSTNAME
+    INTO CUSTOMER_FIRST
+    FROM CUSTOMER C
+    WHERE CUSTOMER_ID = CUSTOMERID;
+    SELECT C.COMPANY
+    INTO COMPANY_NAME
+    FROM CUSTOMER C
+    WHERE CUSTOMER_ID = CUSTOMERID;
+    SELECT C.LASTNAME
+    INTO CUSTOMER_LAST
+    FROM CUSTOMER C
+    WHERE CUSTOMER_ID = CUSTOMERID;
+    NAME_OF_CUSTOMER := CUSTOMER_FIRST + CUSTOMER_LAST;
+    COMPANY_OF_CUSTOMER := COMPANY_NAME;
+END;
 
 
 
 -- 5. TRANSACTIONS
+-- Task – Create a transaction that given a invoiceId will delete that invoice (There may be constraints that rely on this, find out how to resolve them).
+CREATE OR REPLACE PROCEDURE TRANSACTIONS (GETINVOICEID NUMBER)
+AS
+BEGIN
+DELETE FROM INVOICE WHERE INVOICEID = GETINVOICEID;
+COMMIT;
+END;
 
 
 
 -- 6. TRIGGERS 
 
 -- 6.1 AFTER/FOR
+-- Task - Create an after insert trigger on the employee table fired after a new record is inserted into the table.
+CREATE OR REPLACE TRIGGER TR_INSERT_TRIGGER
+AFTER INSERT ON EMPLOYEE
+FOR EACH ROW
+DECLARE
+NUM_COUNT NUMBER;
+BEGIN 
+    SELECT COUNT(E.FIRSTNAME) INTO NUM_COUNT FROM EMPLOYEE E;
+END;
+
+-- Task – Create an after update trigger on the album table that fires after a row is inserted in the table
+CREATE OR REPLACE TRIGGER TR_UPDATE_TRIGGER
+AFTER UPDATE ON ALBUM
+FOR EACH ROW
+DECLARE
+NUM_COUNT NUMBER;
+BEGIN 
+    SELECT COUNT(A.ARTISTID) INTO NUM_COUNT FROM ALBUM A;
+END;
+
+-- Task – Create an after delete trigger on the customer table that fires after a row is deleted from the table.
+CREATE OR REPLACE TRIGGER TR_DELETE_TRIGGER
+AFTER DELETE ON ALBUM
+FOR EACH ROW
+DECLARE
+NUM_COUNT NUMBER;
+BEGIN 
+    SELECT COUNT(C.ARTISTID) INTO NUM_COUNT FROM CUSTOMER C;
+END;
 
 
 
 -- 7. JOINS
 
 -- 7.1 INNER
-
+-- Task – Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+SELECT C.FIRSTNAME, C.LASTNAME, I.INVOICEID 
+FROM CUSTOMER C
+INNER JOIN INVOICE I
+ON I.CUSTOMERID = C.CUSTOMERID;
 
 
 -- 7.2 OUTER
-
+-- Task – Create an full join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+SELECT C.CUSTOMERID, C.FIRSTNAME, C.LASTNAME, I.TOTAL, I.INVOICEID 
+FROM CUSTOMER C
+FULL JOIN INVOICE I
+ON I.CUSTOMERID = C.CUSTOMERID;
 
 
 -- 7.3 RIGHT
-
+-- Task – Create a right join that joins album and artist specifying artist name and title.
+SELECT A.NAME, AL.TITLE
+FROM ARTIST A
+RIGHT JOIN ALBUM AL
+ON A.ARTISTID = AL.ARTISTID;
 
 
 -- 7.4 CROSS
-
+-- Task – Create a cross join that joins album and artist and sorts by artist name in ascending order.
+SELECT *
+FROM ARTIST A
+CROSS JOIN ALBUM AL
+ORDER BY A.NAME;
 
 
 -- 7.5 SELF
+-- Task – Perform a self-join on the employee table, joining on the reportsto column.
+SELECT * FROM EMPLOYEE A, EMPLOYEE B
+WHERE A.REPORTSTO = B.REPORTSTO;
