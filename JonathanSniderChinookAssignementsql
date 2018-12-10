@@ -1,0 +1,267 @@
+--2.1 SELECT
+--Select all records from the Employee table.
+SELECT * FROM EMPLOYEE;
+
+--Select all records from the Employee table where last name is King.
+SELECT * FROM EMPLOYEE
+WHERE LASTNAME='King';
+
+--Select all records from the Employee table where first name is Andrew and REPORTSTO is NULL.
+SELECT * FROM EMPLOYEE
+WHERE FIRSTNAME='Andrew' AND REPORTSTO IS NULL;
+
+
+--2.2 ORDER BY
+--Select all albums in Album table and sort result set in descending order by title.
+SELECT * FROM ALBUM
+ORDER BY TITLE DESC;
+
+--Select first name from Customer and sort result set in ascending order by city
+SELECT FIRSTNAME, CITY FROM EMPLOYEE
+ORDER BY CITY ASC;
+
+--2.3 INSERT INTO
+--Insert two new records into Genre table
+INSERT INTO GENRE (GENREID, NAME)
+VALUES (26, 'just screaming, like a lot of screaming');
+
+INSERT INTO GENRE (GENREID, NAME)
+VALUES (27, 'New Age Retro Rock');
+
+--Insert two new records into Employee table
+INSERT INTO EMPLOYEE (EMPLOYEEID, LASTNAME, FIRSTNAME, TITLE, REPORTSTO, BIRTHDATE, HIREDATE, ADDRESS, CITY, STATE, COUNTRY,
+POSTALCODE, PHONE, FAX, EMAIL)
+VALUES(9, 'Jimmy', 'James', 'IT Staff', 6, TO_DATE('17-FEB-68'), TO_DATE('19-FEB-03'), '1200 Example Lane West','Calgary','AB','Canada','T2P 2T3',
+'+1 (480) 546-1231','+1 (560) 925-0769', 'james@chinookcorp.com');
+
+INSERT INTO EMPLOYEE (EMPLOYEEID, LASTNAME, FIRSTNAME, TITLE, REPORTSTO, BIRTHDATE, HIREDATE, ADDRESS, CITY, STATE, COUNTRY,
+POSTALCODE, PHONE, FAX, EMAIL)
+VALUES(10, 'Jimmy', 'Jane', 'Sales Support Agent', 2, TO_DATE('17-FEB-68'), TO_DATE('19-FEB-03'), '1201 Example Lane West','Calgary','AB','Canada','T2P 2T3',
+'+1 (480) 546-1231','+1 (560) 925-0769', 'james@chinookcorp.com');
+
+--Insert two new records into Customer table
+INSERT INTO CUSTOMER (CUSTOMERID, FIRSTNAME, LASTNAME, COMPANY, ADDRESS, CITY, STATE, COUNTRY, POSTALCODE, PHONE, FAX, EMAIL, SUPPORTREPID)
+VALUES (60, 'Arnold', 'Schwarzenegger', 'Schwarzenegger LLC', '1000 Terminator Lane', 'San Francisco', 'CA','USA','70644','+1 (865) 453-3421','+1 (644) 876-9765','TheBigMan@gmail.com',6);
+
+INSERT INTO CUSTOMER (CUSTOMERID, FIRSTNAME, LASTNAME, COMPANY, ADDRESS, CITY, STATE, COUNTRY, POSTALCODE, PHONE, FAX, EMAIL, SUPPORTREPID)
+VALUES (61, 'Gilbert', 'Gottfried', 'Aflac', '1200 Iago Boulevard', 'Dallas', 'TX','USA','70544','+1 (799) 412-3478','+1 (087) 432-9675','IVoiceBirds@gmail.com',6);
+
+--2.4 UPDATE
+--Update Aaron Mitchell in Customer table to Robert Walter
+UPDATE CUSTOMER
+SET FIRSTNAME='Robert', LASTNAME='Walters'
+WHERE CUSTOMERID=32;
+
+--Update name of artist in the Artist table “Creedence Clearwater Revival” to “CCR”
+UPDATE ARTIST
+SET NAME='CCR'
+WHERE NAME='Creedence Clearwater Revival';
+
+--2.5 LIKE
+
+--Select all invoices with a billing address like “T%” 
+SELECT * FROM INVOICE WHERE BILLINGADDRESS LIKE 'T%'; 
+
+--2.6 BETWEEN
+
+--Select all invoices that have a total between 15 and 50
+SELECT * FROM INVOICE WHERE TOTAL BETWEEN 15 AND 50;
+
+--Select all employeesID hired between 1st of June 2003 and 1st of March 2004
+SELECT EMPLOYEEID FROM EMPLOYEE WHERE HIREDATE BETWEEN '01-JUN-03' AND '01-MAR-04';
+
+--2.7 DELETE
+
+--Delete a record in Customer table where the name is Robert Walter (There may be constraints that rely on this, find out how to resolve them).
+ALTER TABLE CUSTOMER
+DROP CONSTRAINT FK_CUSTOMERSUPPORTREPID;
+/
+ALTER TABLE CUSTOMER
+ADD CONSTRAINT FK_CUSTOMERSUPPORTREPID
+FOREIGN KEY (SUPPORTREPID) REFERENCES EMPLOYEE(EMPLOYEEID) ON DELETE CASCADE;
+/
+ALTER TABLE INVOICE
+DROP CONSTRAINT FK_INVOICECUSTOMERID;
+/
+ALTER TABLE INVOICE
+ADD CONSTRAINT FK_INVOICECUSTOMERID
+FOREIGN KEY (CUSTOMERID) REFERENCES CUSTOMER(CUSTOMERID) ON DELETE CASCADE;
+/
+ALTER TABLE INVOICELINE
+DROP CONSTRAINT FK_INVOICELINEINVOICEID;
+/
+ALTER TABLE INVOICELINE
+ADD CONSTRAINT FK_INVOICELINEINVOICEID
+FOREIGN KEY (INVOICEID) REFERENCES INVOICE(INVOICEID) ON DELETE CASCADE;
+/
+DELETE
+FROM CUSTOMER
+WHERE FIRSTNAME = 'Robert' AND LASTNAME = 'Walter';
+/
+
+--3.1 SYSTEM DEFINED FUNCTIONS
+
+--Create a function that returns the current time.
+CREATE OR REPLACE FUNCTION CURRENT_TIME
+RETURN DATE
+IS
+Z DATE;
+BEGIN
+SELECT SYSDATE INTO Z FROM DUAL;
+     RETURN Z;
+END;
+     --oracle doc
+     --SELECT SYSDATE INTO Z
+    --(SYSDATE, 'MM-DD-YYYY HH24:MI:SS')
+    -- FROM DUAL;
+   
+--create a function that return the length of name in MEDIATYPE table
+CREATE OR REPLACE FUNCTION FIND_LENGTH(X IN NUMBER)
+RETURN NUMBER
+IS
+Z NUMBER;
+BEGIN
+     SELECT LENGTH(NAME) INTO Z FROM MEDIATYPE WHERE MEDIATYPEID=X;
+     RETURN Z;
+END;
+--3.2 System Defined Aggregate Functions
+--Create a function that returns the average total of all invoices
+
+CREATE OR REPLACE FUNCTION INVOICE_AVERAGE
+RETURN NUMBER
+IS
+Z NUMBER;
+BEGIN
+    SELECT AVG(TOTAL) INTO Z FROM INVOICE;
+    RETURN Z;
+END;
+
+--Create a function that returns the most expensive track
+
+CREATE OR REPLACE FUNCTION HIGHEST_INVOICE
+RETURN NUMBER
+IS
+Z NUMBER;
+BEGIN
+SELECT MAX(TOTAL) INTO Z FROM INVOICE;
+RETURN Z;
+END;
+
+--3.3 User Defined Scalar Functions
+--Create a function that returns the average price of invoiceline items in the invoiceline table
+
+CREATE OR REPLACE FUNCTION INVOICELINE_AVERAGE
+RETURN NUMBER
+IS
+Z NUMBER;
+BEGIN
+    SELECT AVG(UNITPRICE) INTO Z FROM INVOICELINE;
+    RETURN Z;
+END;
+
+--Create a function that returns all employees who are born after 1968.
+
+CREATE OR REPLACE FUNCTION BIRTH_CUTOFF
+RETURN VARCHAR2
+IS
+Z VARCHAR2 (200);
+BEGIN
+        SELECT FIRSTNAME INTO Z FROM EMPLOYEE WHERE HIREDATE> '12/31/1968';
+        RETURN Z;
+END;
+
+--4.1 Basic Stored Procedure
+--Create a stored procedure that selects the first and last names of all the employees.
+
+CREATE OR REPLACE PROCEDURE SELECT_NAME(DATA_HOLDER OUT SYS_REFCURSOR)
+IS
+BEGIN
+OPEN DATA_HOLDER FOR SELECT FIRSTNAME,LASTNAME  FROM EMPLOYEE;
+END;
+
+--4.2 Stored Procedure Input Parameters
+--Create a stored procedure that updates the personal information of an employee.
+
+CREATE OR REPLACE PROCEDURE UPDATE_EMLOYEE( E_ID_TO_CHANGE IN NUMBER,E_ID IN NUMBER, E_LAST IN VARCHAR2,E_FIRST IN  VARCHAR2,E_TITLE IN VARCHAR2,E_REPORTS
+IN NUMBER, E_BIRTHDATE IN DATE, E_HIREDATE IN DATE, E_ADDRESS IN VARCHAR2, E_CITY IN VARCHAR2, E_STATE IN VARCHAR2, E_COUNTRY IN VARCHAR2,
+E_POSTAL_CODE IN VARCHAR2, E_PHONE IN VARCHAR2, E_FAX IN VARCHAR2, E_EMAIL IN VARCHAR2)
+IS
+BEGIN
+UPDATE EMPLOYEE
+SET EMPLOYEEID=E_ID, LASTNAME=E_LAST, FIRSTNAME=E_FIRST, TITLE=E_TITLE, REPORTSTO=E_REPORTS, BIRTHDATE=E_BIRTHDATE, HIREDATE=E_HIREDATE,
+ADDRESS=E_ADDRESS, CITY=E_CITY, STATE=E_STATE, COUNTRY=E_COUNTRY, POSTALCODE=E_POSTAL_CODE, PHONE=E_PHONE, FAX=E_FAX, EMAIL=E_EMAIL
+WHERE EMPLOYEEID=E_ID_TO_CHANGE;
+END;
+
+--Create a stored procedure that returns the managers of an employee.
+
+CREATE OR REPLACE PROCEDURE FIND_BOSS(E_ID IN NUMBER, BOSS_NAME OUT VARCHAR2)
+IS
+BOSS_ID NUMBER;
+BEGIN
+
+SELECT REPORTSTO INTO BOSS_ID FROM EMPLOYEE WHERE EMPLOYEEID=E_ID;
+SELECT FIRSTNAME INTO BOSS_NAME FROM EMPLOYEE WHERE EMPLOYEEID=BOSS_ID;
+
+END;
+
+--Create a stored procedure that returns the name and company of a customer.
+
+
+CREATE OR REPLACE PROCEDURE SELECT_NAME(DATA_HOLDER OUT SYS_REFCURSOR)
+IS
+BEGIN
+OPEN DATA_HOLDER FOR SELECT FIRSTNAME,LASTNAME,COMPANY  FROM EMPLOYEE;
+END;
+
+--6.0 Triggers
+--In this section you will create various kinds of triggers that work when certain DML statements are executed on a table.
+--6.1 AFTER/FOR
+--Task - Create an after insert trigger on the employee table fired after a new record is inserted into the table.
+CREATE OR REPLACE TRIGGER TR_INSERT_EMPLOYEE
+AFTER INSERT ON EMPLOYEE
+BEGIN
+    DBMS_OUTPUT.put_line('new employee added!');
+END;
+
+--Create an after update trigger on the album table that fires after a row is inserted in the table
+CREATE OR REPLACE TRIGGER TR_INSERT_EMPLOYEE
+AFTER UPDATE ON ALBUM
+BEGIN
+    DBMS_OUTPUT.put_line('album table updated!');
+END;
+
+--Create an after delete trigger on the customer table that fires after a row is deleted from the table.
+CREATE OR REPLACE TRIGGER TR_CUSTOMER_DELETE
+AFTER DELETE ON CUSTOMER
+BEGIN
+    DBMS_OUTPUT.put_line('customer deleted');
+END;
+
+ --Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+ SELECT C.FIRSTNAME,C.LASTNAME,INVOICE.INVOICEID
+ FROM CUSTOMER C
+INNER JOIN INVOICE ON C.CUSTOMERID = INVOICE.CUSTOMERID;
+ 
+ --Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+ SELECT C.CUSTOMERID, C.FIRSTNAME,C.LASTNAME, INVOICE.INVOICEID,INVOICE.TOTAL
+ FROM CUSTOMER C
+FULL OUTER JOIN INVOICE ON C.CUSTOMERID=INVOICE.CUSTOMERID;
+ 
+--Create a right join that joins album and artist specifying artist name and title.
+
+SELECT A.TITLE, ARTIST.NAME
+FROM ALBUM A
+RIGHT JOIN ARTIST ON A.ARTISTID=ARTIST.ARTISTID;
+
+--Create a cross join that joins album and artist and sorts by artist name in ascending order.
+SELECT A.NAME, ALBUM.TITLE
+FROM ARTIST A
+CROSS JOIN ALBUM WHERE A.ARTISTID=ALBUM.ARTISTID
+ORDER BY A.NAME ASC;
+
+ --Perform a self-join on the employee table, joining on the reportsto column.
+ 
+ SELECT A.FIRSTNAME, B.REPORTSTO
+ FROM EMPLOYEE A, EMPLOYEE B
+ WHERE  A.EMPLOYEEID=B.EMPLOYEEID;
