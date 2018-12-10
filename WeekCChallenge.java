@@ -12,10 +12,15 @@ public class WeekCChallenge {
 		double subtractionResult;
 		double multiplicationResult;
 		double divisionResult;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5afb7e7aa9c65868fe2dba66069ddde6763e5070
 		//3. print the value of each of these variables to the console with a descriptive message
 		
 
 		//4. implement the static fizzBuzz method in this class and call it from the main method
+<<<<<<< HEAD
 		
 			Calculator Calc = new Calculator ();
 		additionResult =	Calc.add(1,2);
@@ -58,3 +63,12 @@ public class WeekCChallenge {
 }
 }
 	
+=======
+	}
+	
+
+	public static void fizzBuzz(int m, int n, int[] numbers, String[] terms){
+
+	}
+}
+>>>>>>> 5afb7e7aa9c65868fe2dba66069ddde6763e5070

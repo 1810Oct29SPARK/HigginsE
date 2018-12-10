@@ -6,6 +6,7 @@
     Each multiple of both 3 and 5 replaced with 'fizzbuzz'
 */
 function fizzBuzz1(){
+<<<<<<< HEAD
 let num = 0;
 let statement3 = "Fizz";
 let statement5 = "Buzz";
@@ -34,6 +35,11 @@ return num;
     console.log('fizzbuzz1');
 
 >>>>>>> 6c2609875967f8f9304a6f639b97ef96633e48cf
+=======
+
+    console.log('fizzbuzz1');
+
+>>>>>>> 5afb7e7aa9c65868fe2dba66069ddde6763e5070
 }
 
 /*
@@ -45,6 +51,7 @@ return num;
     Validation that m <= n is a plus. 
 */
 function fizzBuzz2(m,n){
+<<<<<<< HEAD
 let statement3 = "Fizz";
 let statement5 = "Buzz";
 let statement3and5= "Fizzbuzz"
@@ -72,6 +79,11 @@ for(let count = m; count<n; count++) {
     }
 }
 }
+=======
+
+}
+
+>>>>>>> 5afb7e7aa9c65868fe2dba66069ddde6763e5070
 /*
     Variable-length, varying-fizz/buzz number FizzBuzz:
     Write a function which prints out the numbers m-n, with the following substitutions:
@@ -94,6 +106,7 @@ function fizzBuzz3(m,n,fizzNum,buzzNum){
     The arrays may have any length, but validation that their length is the SAME is a plus. 
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 function fizzBuzz3(m,n,numbers,terms){
 let statement3 = "Fizz";
 let statement5 = "Buzz";
@@ -110,6 +123,10 @@ let statement3and5= "Fizzbuzz"
 function fizzBuzz4(m,n,numbers,terms){
 
 >>>>>>> 6c2609875967f8f9304a6f639b97ef96633e48cf
+=======
+function fizzBuzz4(m,n,numbers,terms){
+
+>>>>>>> 5afb7e7aa9c65868fe2dba66069ddde6763e5070
 }
 
 
