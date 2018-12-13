@@ -100,5 +100,4 @@ local.properties
 Servers/
 */target/
 
-/BankChallenge
 *.properties
