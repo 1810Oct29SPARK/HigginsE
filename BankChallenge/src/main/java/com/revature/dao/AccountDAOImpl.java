@@ -30,7 +30,7 @@ public class AccountDAOImpl implements AccountDAO {
 			
 			pstmt.setInt(1,userID);
 			 
-			ResultSet rs = pstmt.executeQuery(sql);
+			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				int accountId = rs.getInt("ACCOUNT_ID");
 				String accountName = rs.getString("ACCOUNT_NAME");
