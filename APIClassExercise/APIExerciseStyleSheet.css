@@ -1,0 +1,25 @@
+.jumbotron{
+    background-color: rgba(40, 218, 64, 0.842);
+}
+
+.btn-primary 
+{
+    background-color: rgba(179, 218, 40, 0.842);
+    border-color: brown;
+}
+
+#ChuckList>li
+{
+    color: rgb(206, 235, 43);
+}
+
+body
+{
+    background-image: url("chuck.jpg");
+}
+
+#chuckHolder
+{
+    background-color: black;
+    border-radius: 10px;
+}
