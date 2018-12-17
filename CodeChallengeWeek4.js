@@ -21,12 +21,14 @@ function listTampaWeather() {
     }).then((data) => {
         console.log(data);
         var unorderedList = document.createElement("ol");
+        unorderedList.classList.add("list-group");
         for (var key in data) {
             if (data.hasOwnProperty(key)) {
               var val = data[key];
               for(var key in val){
                 var listItem = document.createElement("li");
                 listItem.innerHTML = val[key];
+                listItem.classList.add("list-group-item");
                 unorderedList.appendChild(listItem);
               }
               console.log(val);
