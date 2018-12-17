@@ -24,9 +24,11 @@ function listTampaWeather() {
         for (var key in data) {
             if (data.hasOwnProperty(key)) {
               var val = data[key];
+              for(var key in val){
                 var listItem = document.createElement("li");
-                listItem.innerHTML = val;
+                listItem.innerHTML = val[key];
                 unorderedList.appendChild(listItem);
+              }
               console.log(val);
             }
         document.body.appendChild(unorderedList);
