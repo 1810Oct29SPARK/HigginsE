@@ -111,6 +111,15 @@ public class DNACheck {
 							//this switch case doesn't work because you can replace C with A
 							//Oh I shoulda caught that.
 							//oh well. I'll work on it at home later.
+							
+							//hey dumb guy i figured something out.
+							//what is it?
+							//All you got to do is change the char to the one at bank
+							//then check that one against the end
+							//if they are both good you can increment
+							//but how do you read from a text file.
+							//aw come on man I'm trying to help you.
+							//you can figure that out on your own
 							}
 							if (recombinant[n]!=bank[banco].charAt(n)) {
 								indexes.add(n);
