@@ -1,0 +1,29 @@
+body {
+	font-size: 16px;
+	font-family: 'Titillium Web', 'Courier New', Courier, monospace;
+}
+
+a, a:hover, a:visited {
+	text-decoration: none;
+}
+
+header {
+	background-color: chartreuse;
+}
+
+footer {
+	background-color: #20c997;
+}
+
+.btn-picsum {
+	margin: 10px 0;
+}
+
+#picsum {
+	font-size: 24px;
+}
+
+#copyright {
+	background-color: #17a2b8;
+	color: white;
+}
