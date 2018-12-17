@@ -43,7 +43,7 @@ function shiba() {
             }]
             
           };
-          for (i=0; i<dogePic.length; i++) {
+          for (i=1; i<=dogePic.length; i++) {
               data.images.push({"bannerImg1":dogePic[i]})
           }
           console.log(data.images);
