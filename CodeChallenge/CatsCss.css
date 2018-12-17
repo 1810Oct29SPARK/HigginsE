@@ -1,0 +1,21 @@
+body {
+    background-color:white;
+    text-align: center;
+}
+
+.facts {
+    text-align: center;
+    color: grey;
+    margin: auto;
+}
+#facts-field{
+    width: 100%;
+    text-align: center;
+}
+
+#main-content-container {
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+}
+
