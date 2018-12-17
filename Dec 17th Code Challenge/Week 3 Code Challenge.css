@@ -1,0 +1,23 @@
+#Title {
+    text-align: center;
+    color: blue;
+}
+
+#page {
+    background-color: orange;
+
+}
+
+#mainCaption {
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    margin: 25px;
+}
+
+#mainButton {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
