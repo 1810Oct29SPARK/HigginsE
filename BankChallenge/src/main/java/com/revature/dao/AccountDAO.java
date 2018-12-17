@@ -8,6 +8,6 @@ public interface AccountDAO {
 
 	public Account getAccountById(int id);
 	
+	//update accounts by user
 	
-	//define necessary CRUD methods and build an implementing class in this package
 }
