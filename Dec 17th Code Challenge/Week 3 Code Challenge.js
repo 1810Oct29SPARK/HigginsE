@@ -22,4 +22,3 @@ function updateQuote() {
 quoteButton.onclick = updateQuote;
 updateQuote();
 
-
