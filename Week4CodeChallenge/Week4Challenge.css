@@ -1,0 +1,58 @@
+body {
+    background-color: rgba(115, 212, 178, 0.932);
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  /* INPUT */
+  input {
+    outline: 0;
+    border-radius: 4px;
+    border: none;
+    font-size: 20px;
+  }
+  
+  
+  ::placeholder {
+    opacity: 0.6;
+  }
+  
+  /* CENTER CONTENT */
+  .main {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: column;
+  }
+
+  .jumbotron{
+    background-color: rgba(231, 211, 169, 0.932);
+  }
+  
+  
+  /* RESULTS TABLE */
+  #results {
+    margin-top: 5px;
+    
+  }
+  
+  #results th {
+    text-align: center;
+  }
+  
+  #dietResults{
+  }
+  .setBorder{
+      border-style: solid;
+      border-color: rgb(50,50,50);
+      border-width: 3px 0 1px; 
+  }
+  .nutrition{
+      text-align: center;
+      
+      padding: 0 0 0;
+  }
+  
