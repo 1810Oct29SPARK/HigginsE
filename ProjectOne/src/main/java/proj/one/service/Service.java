@@ -1,12 +1,11 @@
-package proj.one.dao;
+package proj.one.service;
 
 import java.util.List;
 
 import proj.one.beans.Employee;
-import proj.one.beans.Manager;
 import proj.one.beans.Request;
 
-public interface ImperialDAO {
+public interface Service {
 	
 	//Define methods here
 	//Methods for pulling data from DB
