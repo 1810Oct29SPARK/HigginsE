@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 	//And here's where the action begins
 	//First, to grab information grabbed by the DAOs from the DB
 	protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("IMA_HomePage.html").forward(req, resp);
+		req.getRequestDispatcher("Home.html").forward(req, resp);
 	}
 		
 	//Next, to post the information we just grabbed onto the site, so that the users can see it
@@ -53,10 +53,10 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("employeeUser", e.getEmployeeUser());
 			session.setAttribute("employeePass", e.getEmployeePass());
 			session.setAttribute("problem", null);
-			resp.sendRedirect("Employee Page");
+			resp.sendRedirect("Employee");
 		} else {
 			session.setAttribute("problem", "invalid username or password");
-			resp.sendRedirect("Imperial Martial Arts");
+			resp.sendRedirect("Home");
 		}
 	}
 	protected void doPostManagerLogin (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -72,10 +72,10 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("managerUser", m.getManagerUser());
 			session.setAttribute("managerPass", m.getManagerPass());
 			session.setAttribute("problem", null);
-			resp.sendRedirect("Manager Page");
+			resp.sendRedirect("Manager");
 		} else {
 			session.setAttribute("problem", "invalid username or password");
-			resp.sendRedirect("Imperial Martial Arts");
+			resp.sendRedirect("Home");
 		}
 	}
 	

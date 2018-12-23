@@ -2,12 +2,12 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Imperial Martial Arts</title>
+	<title>Home</title>
 	<link rel="stylesheet" href=IMA_Styles.css/>
 </head>
 <body>
 	<h1>Imperial Martial Arts Home Page</h1>
-	<form>
+	<form id = "employee">
 		<h3>Employee Login</h3>
 		<fieldset action = "Login" method = "POST">
 			<legend>username:</legend>
@@ -18,9 +18,9 @@
 			<input required type = "password" name = "password"/>
 		</fieldset>
 		<br>
-		<input type = "submit">
+		<input type = "submit" value = "Log in">
 	</form>
-	<form>
+	<form id = "manager">
 		<h3>Manager Login</h3>
 		<fieldset action = "Login" method = "POST">
 			<legend>username:</legend>
@@ -31,7 +31,7 @@
 			<input required type = "password" name = "password"/>
 		</fieldset>
 		<br>
-		<input type = "submit">
+		<input type = "submit" value = "Log in">
 	</form>
 </body>
 </html>

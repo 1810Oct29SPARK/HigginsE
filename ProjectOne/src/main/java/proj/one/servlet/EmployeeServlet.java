@@ -30,9 +30,9 @@ public class EmployeeServlet extends HttpServlet {
 	protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
 		if (session != null && session.getAttribute("employeeUser") != null) {
-			req.getRequestDispatcher("IMA_Employee_Page.html").forward(req, resp);
+			req.getRequestDispatcher("Employee.html").forward(req, resp);
 		} else {
-			resp.sendRedirect("Imperial Martial Arts Home Page");
+			resp.sendRedirect("Home");
 		}
 	}
 	
