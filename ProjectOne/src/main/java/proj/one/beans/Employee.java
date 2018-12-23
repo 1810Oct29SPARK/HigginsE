@@ -19,8 +19,8 @@ public class Employee {
 	String firstName;
 	String lastName;
 	String email;
-	String employeeUser;
-	String employeePass;
+	static String employeeUser;
+	static String employeePass;
 	int directManagerId;
 	int managerId;
 	
@@ -48,13 +48,13 @@ public class Employee {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getEmployeeUser() {
+	public static String getEmployeeUser() {
 		return employeeUser;
 	}
 	public void setEmployeeUser(String employeeUser) {
 		this.employeeUser = employeeUser;
 	}
-	public String getEmployeePass() {
+	public static String getEmployeePass() {
 		return employeePass;
 	}
 	public void setEmployeePass(String employeePass) {

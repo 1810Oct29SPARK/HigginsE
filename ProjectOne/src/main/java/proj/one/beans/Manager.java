@@ -12,8 +12,8 @@ public class Manager {
 	}
 
 	int managerId;
-	String managerUser;
-	String managerPass;
+	static String managerUser;
+	static String managerPass;
 	String managerFirst;
 	String managerLast;
 	
@@ -23,13 +23,13 @@ public class Manager {
 	public void setManagerId(int managerId) {
 		this.managerId = managerId;
 	}
-	public String getManagerUser() {
+	public static String getManagerUser() {
 		return managerUser;
 	}
 	public void setManagerUser(String managerUser) {
 		this.managerUser = managerUser;
 	}
-	public String getManagerPass() {
+	public static String getManagerPass() {
 		return managerPass;
 	}
 	public void setManagerPass(String managerPass) {
