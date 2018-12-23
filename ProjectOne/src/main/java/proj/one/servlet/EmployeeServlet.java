@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -27,7 +28,12 @@ public class EmployeeServlet extends HttpServlet {
 	//And here's where the action begins
 	//First, to grab information grabbed by the DAOs from the DB
 	protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		HttpSession session = req.getSession(false);
+		if (session != null && session.getAttribute("employeeUser") != null) {
+			req.getRequestDispatcher("IMA_Employee_Page.html").forward(req, resp);
+		} else {
+			resp.sendRedirect("Imperial Martial Arts Home Page");
+		}
 	}
 	
 	//Next, to post the information we just grabbed onto the site, so that the users can see it
