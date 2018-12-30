@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.revature.beans.Account;
-import com.revature.beans.User;
+//import com.revature.beans.User;
 import com.revature.dao.AccountDAO;
 import com.revature.dao.AccountDAOImpl;
 import com.revature.dao.UserDAO;
