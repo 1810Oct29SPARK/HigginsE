@@ -12,8 +12,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import proj.one.beans.Employee;
 import proj.one.beans.Manager;
-import proj.one.beans.UserE;
-import proj.one.beans.UserM;
+import proj.one.beans.EmployeeUser;
+import proj.one.beans.ManagerUser;
 import proj.one.service.AuthenticationService;
 import proj.one.service.Service;
 import proj.one.service.ServiceImpl;
@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("Handling request...Just a moment, please...Almost there...");
 		HttpSession session = req.getSession();
 		resp.setContentType("text/html");
-		UserE ue = new UserE(req.getParameter("employeeUser"), req.getParameter("employeePass"));
+		EmployeeUser ue = new EmployeeUser(req.getParameter("employeeUser"), req.getParameter("employeePass"));
 		Employee e = authServ.isValidEmployee(ue);
 		if (e != null) {
 			session.setAttribute("employeeId", e.getEmployee_id());
@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("Handling request...Just a moment, please...Almost there...");
 		HttpSession session = req.getSession();
 		resp.setContentType("text/html");
-		UserM um = new UserM(req.getParameter("managerUser"), req.getParameter("managerPass"));
+		ManagerUser um = new ManagerUser(req.getParameter("managerUser"), req.getParameter("managerPass"));
 		Manager m = authServ.isValidManager(um);
 		if (m != null) {
 			session.setAttribute("managerId", m.getManagerId());

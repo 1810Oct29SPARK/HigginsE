@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>EmployeeLoginV2</display-name>
+    <servlet-name>EmployeeLoginV2</servlet-name>
+    <servlet-class>proj.one.servlet.v2.EmployeeLoginV2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeLoginV2</servlet-name>
+    <url-pattern>/EmployeeLoginV02</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -6,14 +6,12 @@ public class Manager {
 		super();
 		this.managerId = managerId;
 		this.managerUser = managerUser;
-		this.managerPass = managerPass;
 		this.managerFirst = managerFirst;
 		this.managerLast = managerLast;
 	}
 
 	int managerId;
 	static String managerUser;
-	static String managerPass;
 	String managerFirst;
 	String managerLast;
 	
@@ -29,16 +27,12 @@ public class Manager {
 	public void setManagerUser(String managerUser) {
 		this.managerUser = managerUser;
 	}
-	public static String getManagerPass() {
-		return managerPass;
-	}
-	public void setManagerPass(String managerPass) {
-		this.managerPass = managerPass;
-	}
+	
+	
 	@Override
 	public String toString() {
-		return "Manager [managerId=" + managerId + ", managerUser=" + managerUser + ", managerPass=" + managerPass
-				+ ", managerFirst=" + managerFirst + ", managerLast=" + managerLast + "]";
+		return "Manager [managerId=" + managerId + ", managerUser=" + managerUser + ", "
+				+ "managerFirst=" + managerFirst + ", managerLast=" + managerLast + "]";
 	}
 	public String getManagerFirst() {
 		return managerFirst;

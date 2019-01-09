@@ -1,8 +1,8 @@
 package proj.one.beans;
 
-public class UserE {
+public class EmployeeUser {
 	
-	public UserE(String employeeUser, String employeePass) {
+	public EmployeeUser(String employeeUser, String employeePass) {
 		super();
 		this.employeeUser = employeeUser;
 		this.employeePass = employeePass;

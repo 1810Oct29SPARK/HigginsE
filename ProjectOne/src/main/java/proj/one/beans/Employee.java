@@ -2,16 +2,14 @@ package proj.one.beans;
 
 public class Employee {
 	
-	public Employee(int employee_id, String firstName, String lastName, String email, String employeeUser,
-			String employeePass, int directManagerId, int managerId) {
+	public Employee(int employee_id, String firstName, String lastName, String email, String employeeUser, 
+			int managerId) {
 		super();
 		this.employee_id = employee_id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.employeeUser = employeeUser;
-		this.employeePass = employeePass;
-		this.directManagerId = directManagerId;
 		this.managerId = managerId;
 	}
 
@@ -20,8 +18,6 @@ public class Employee {
 	String lastName;
 	String email;
 	static String employeeUser;
-	static String employeePass;
-	int directManagerId;
 	int managerId;
 	
 	public int getEmployee_id() {
@@ -54,12 +50,7 @@ public class Employee {
 	public void setEmployeeUser(String employeeUser) {
 		this.employeeUser = employeeUser;
 	}
-	public static String getEmployeePass() {
-		return employeePass;
-	}
-	public void setEmployeePass(String employeePass) {
-		this.employeePass = employeePass;
-	}
+	
 	public int getManagerId() {
 		return managerId;
 	}
@@ -69,14 +60,8 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [employee_id=" + employee_id + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + ", employeeUser=" + employeeUser + ", employeePass=" + employeePass
-				+ ", directManagerId=" + directManagerId + ", managerId=" + managerId + "]";
+				+ ", email=" + email + ", employeeUser=" + employeeUser + ", managerId=" + managerId + "]";
 	}
-	public int getDirectManagerId() {
-		return directManagerId;
-	}
-	public void setDirectManagerId(int directManagerId) {
-		this.directManagerId = directManagerId;
-	}
+	
 
 }

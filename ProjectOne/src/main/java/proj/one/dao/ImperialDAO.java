@@ -21,7 +21,7 @@ public interface ImperialDAO {
 	//O  employees view their pending requests
 	//O  employees view their resolved requests
 	//O  employees view their information
-	//o  managers view total reimbursement requests from their own employees
+	//O  managers view total reimbursement requests from their own employees
 	//O  managers view resolved requests from all employees as well as which manager resolved them
 	//O  managers view all employees and their managers
 	//O  view all reimbursement requests from any single employee that they manage
