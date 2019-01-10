@@ -12,12 +12,31 @@ public class Employee {
 		this.employeeUser = employeeUser;
 		this.managerId = managerId;
 	}
+	public Employee(String firstName, String lastName, String email, String employeeUser, 
+			int managerId) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.employeeUser = employeeUser;
+		this.managerId = managerId;
+	}
+	public Employee(String firstName, String lastName, String email, String employeeUser) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.employeeUser = employeeUser;
+	}
+	public Employee(int employee_id) {
+		super();
+	}
 
 	int employee_id;
 	String firstName;
 	String lastName;
 	String email;
-	static String employeeUser;
+	String employeeUser;
 	int managerId;
 	
 	public int getEmployee_id() {
@@ -44,7 +63,7 @@ public class Employee {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public static String getEmployeeUser() {
+	public String getEmployeeUser() {
 		return employeeUser;
 	}
 	public void setEmployeeUser(String employeeUser) {

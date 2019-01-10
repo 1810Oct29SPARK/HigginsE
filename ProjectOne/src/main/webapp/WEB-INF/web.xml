@@ -19,4 +19,14 @@
     <servlet-name>EmployeeLoginV2</servlet-name>
     <url-pattern>/EmployeeLoginV02</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeePage</display-name>
+    <servlet-name>EmployeePage</servlet-name>
+    <servlet-class>proj.one.servlet.v2.EmployeePage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeePage</servlet-name>
+    <url-pattern>/EmployeePage</url-pattern>
+  </servlet-mapping>
 </web-app>

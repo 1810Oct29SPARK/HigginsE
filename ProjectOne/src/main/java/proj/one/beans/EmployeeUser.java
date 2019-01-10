@@ -2,13 +2,24 @@ package proj.one.beans;
 
 public class EmployeeUser {
 	
+	public EmployeeUser(String employeeUser, String employeePass, int employeeId) {
+		super();
+		this.employeeUser = employeeUser;
+		this.employeePass = employeePass;
+		this.employeeId = employeeId;
+	}
 	public EmployeeUser(String employeeUser, String employeePass) {
 		super();
 		this.employeeUser = employeeUser;
 		this.employeePass = employeePass;
 	}
+	public EmployeeUser() {
+		super();
+	}
+	
 	String employeeUser;
 	String employeePass;
+	int employeeId;
 	
 	public String getEmployeeUser() {
 		return employeeUser;
@@ -24,7 +35,14 @@ public class EmployeeUser {
 	}
 	@Override
 	public String toString() {
-		return "UserE [employeeUser=" + employeeUser + ", employeePass=" + employeePass + "]";
+		return "EmployeeUser [employeeUser=" + employeeUser + ", employeePass=" + employeePass + ", employeeId="
+				+ employeeId + "]";
+	}
+	public int getEmployeeId() {
+		return employeeId;
+	}
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
 	}
 
 }

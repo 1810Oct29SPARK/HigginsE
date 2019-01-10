@@ -45,7 +45,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public Employee getEmployeeById(int id) {
 		Employee employee = new Employee(0, null, null, null, null, 0);
 		try (Connection con = ConnectionUtil.getConnection(filename)){
-			String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEE_ID = ?";
+			String sql = "SELECT * FROM EMPLOYEE WHERE ID = ?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();

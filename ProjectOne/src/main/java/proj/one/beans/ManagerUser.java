@@ -2,6 +2,12 @@ package proj.one.beans;
 
 public class ManagerUser {
 	
+	public ManagerUser(String managerUser, String managerPass, int managerId) {
+		super();
+		this.managerUser = managerUser;
+		this.managerPass = managerPass;
+		this.managerId = managerId;
+	}
 	public ManagerUser(String managerUser, String managerPass) {
 		super();
 		this.managerUser = managerUser;
@@ -9,6 +15,8 @@ public class ManagerUser {
 	}
 	String managerUser;
 	String managerPass;
+	int managerId;
+	
 	public String getManagerUser() {
 		return managerUser;
 	}
@@ -23,7 +31,14 @@ public class ManagerUser {
 	}
 	@Override
 	public String toString() {
-		return "UserM [managerUser=" + managerUser + ", managerPass=" + managerPass + "]";
+		return "ManagerUser [managerUser=" + managerUser + ", managerPass=" + managerPass + ", managerId=" + managerId
+				+ "]";
+	}
+	public int getManagerId() {
+		return managerId;
+	}
+	public void setManagerId(int managerId) {
+		this.managerId = managerId;
 	}
 	
 
