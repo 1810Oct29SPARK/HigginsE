@@ -33,19 +33,16 @@ public class EmployeeLogin extends HttpServlet {
 		System.out.println("Handling request...");
 		HttpSession session = req.getSession();
 		resp.setContentType("text/html");
-		EmployeeUser user = new EmployeeUser(req.getParameter("employeeUser"), req.getParameter("employeePass"));
-		Employee e = empAuthServ.isValidEmployee(user);
+		EmployeeUser user = new EmployeeUser(req.getParameter("username"), req.getParameter("password"));
+		EmployeeUser e = empAuthServ.isValidEmployee(user);
 		if (e != null) {
-			session.setAttribute("Employee Id", e.getEmployee_id());
-			session.setAttribute("First Name", e.getFirstName());
-			session.setAttribute("Last Name", e.getLastName());
-			session.setAttribute("Email", e.getEmail());
 			session.setAttribute("Username", e.getEmployeeUser());
-			session.setAttribute("Manager", e.getManagerId());
-			resp.sendRedirect("employeePage");
+			session.setAttribute("Password", e.getEmployeePass());
+			session.setAttribute("id", e.getEmployeeId());
+			resp.sendRedirect("EmployeePage");
 		} else {
 			session.invalidate();
-			resp.sendRedirect("Login");
+			resp.sendRedirect("InvalidLogin");
 		}
 	}
 

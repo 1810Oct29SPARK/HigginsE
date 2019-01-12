@@ -15,7 +15,7 @@ let user = {}
 
 
 function employeeLogin(){
-	fetch("localhost:8080/ProjectOne/Login")
+	fetch("localhost:8080/ProjectOne/login")
 	.then((response) => {
 		return response.json();
 	})

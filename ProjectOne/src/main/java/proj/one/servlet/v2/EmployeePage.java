@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import proj.one.beans.EmployeeUser;
 
-@WebServlet("/employeePage")
+@WebServlet("/EmployeePage")
 public class EmployeePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -21,7 +21,7 @@ public class EmployeePage extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("employee.html").forward(req, resp);
+		req.getRequestDispatcher("Employee.html").forward(req, resp);
 	}
 
 	

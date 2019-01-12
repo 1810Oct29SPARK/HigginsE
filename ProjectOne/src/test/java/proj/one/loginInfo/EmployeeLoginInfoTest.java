@@ -17,7 +17,7 @@ public class EmployeeLoginInfoTest {
 	public void getsCorrectUsernameTest() {
 		Employee e = new Employee(2003);
 		String username = e.getEmployeeUser();
-		assertEquals(null, username);
+		assertEquals(e, username);
 	}
 	
 	@Test
@@ -25,15 +25,23 @@ public class EmployeeLoginInfoTest {
 		EmployeeDAO eDao = new EmployeeDAOImpl();
 		Employee e = eDao.getEmployeeById(2003);
 		Employee me = new Employee(2003, "Sean", "Sulham", "ssulham@gmail.com", "ssulham", 4001);
-		assertEquals(null, e);
+		assertEquals(me, e);
 	}
 	
 	@Test
 	public void getsEmployeeUsernameAndPasswordTest() {
 		EmployeeUserDAO userDAO = new EmployeeUserDAOImpl();
-		EmployeeUser user = userDAO.getUsernameAndPassword(employeeUser, password);
+		EmployeeUser user = userDAO.getUsernameAndPassword("employeeUser", "employeePass");
 		EmployeeUser me = new EmployeeUser("ssulham", "sulhams", 2003);
-		assertEquals(null, user);
+		assertEquals(me, user);
+	}
+	
+	@Test
+	public void getsParamTest() {
+		Employee e = null;
+		EmployeeUser user = new EmployeeUser("SSULHAM", "SEANS", 2003);
+		String username = user.getEmployeeUser();
+		
 	}
 
 }

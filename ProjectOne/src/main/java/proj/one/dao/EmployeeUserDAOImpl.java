@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import proj.one.beans.Employee;
 import proj.one.beans.EmployeeUser;
 import proj.one.util.ConnectionUtil;
 
@@ -19,7 +20,7 @@ public class EmployeeUserDAOImpl implements EmployeeUserDAO {
 	@Override
 	public EmployeeUser getUsernameAndPassword(String username, String password) {
 		EmployeeUser user = new EmployeeUser(null, null);
-		try (Connection con = ConnectionUtil.getConnection(filename)){
+		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "SELECT * FROM EMPLOYEE_USERS WHERE USERNAME = ? AND PASSWORD = ?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, username);
@@ -41,7 +42,7 @@ public class EmployeeUserDAOImpl implements EmployeeUserDAO {
 	@Override
 	public List<EmployeeUser> getLoginInfo() {
 		List<EmployeeUser> user = new ArrayList<>();
-		try (Connection con = ConnectionUtil.getConnection(filename)){
+		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "SELECT * FROM EMPLOYEE_USERS";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -57,6 +58,26 @@ public class EmployeeUserDAOImpl implements EmployeeUserDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public EmployeeUser getEmployeeByUsername(String username) {
+		EmployeeUser user = new EmployeeUser(null, null);
+		try (Connection con = ConnectionUtil.getConnection()){
+			String sql = "SELECT * FROM EMPLOYEE WHERE USERNAME = ?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, username);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				String employeeUsername = rs.getString("USERNAME");
+				String employeePassword = rs.getString("PASSWORD");
+				user = new EmployeeUser(employeeUsername, employeePassword);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 }

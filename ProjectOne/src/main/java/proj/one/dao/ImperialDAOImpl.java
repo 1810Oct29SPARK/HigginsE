@@ -34,7 +34,7 @@ public class ImperialDAOImpl implements ImperialDAO {
 
 	public List<Request> getOwnPendingById(int employeeId) {
 		List<Request> pendList = new ArrayList<Request>();
-		try (Connection con = ConnectionUtil.getConnection(filename)){
+		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "SELECT DETAILS FROM REQUEST WHERE STATUS = PENDING";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, employeeId);
@@ -53,7 +53,7 @@ public class ImperialDAOImpl implements ImperialDAO {
 
 	public List<Request> getOwnResolvedById(int employeeId) {
 		List<Request> resList = new ArrayList<>();
-		try (Connection con = ConnectionUtil.getConnection(filename)){
+		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "SELECT DETAILS "
 					+ "FROM REQUEST "
 					+ "WHERE STATUS = APPROVED "
@@ -88,7 +88,7 @@ public class ImperialDAOImpl implements ImperialDAO {
 
 	public List<Employee> getOwnInfoById(int employeeId) {
 		List<Employee> viewInfo = new ArrayList<>();
-		try (Connection con = ConnectionUtil.getConnection(filename)){
+		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "SELECT * FROM EMPLOYEE";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, employeeId);
@@ -117,7 +117,7 @@ public class ImperialDAOImpl implements ImperialDAO {
 
 	public List<Request> getSubordinateRequestsById(int managerId) {
 		List<Request> subReqs = new ArrayList<>();
-		try (Connection con = ConnectionUtil.getConnection(filename)){
+		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "SELECT DETAILS FROM REQUEST R"
 					+ "WHERE MANAGER = ?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -136,7 +136,7 @@ public class ImperialDAOImpl implements ImperialDAO {
 
 	public List<Request> getResolvedWithManagers() {
 		List<Request> resWithMgrList = new ArrayList<>();
-		try (Connection con = ConnectionUtil.getConnection(filename)){
+		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "SELECT REQUEST.DETAILS, MANAGER.FIRSTNAME, MANAGER.LASTNAME"
 					+ "FROM MANAGER M FULL JOIN REQUEST R ON R.EMPLOYEE_ID = M.SUBORDINATE_ID"
 					+ "WHERE REQUEST_STATUS = APPROVED OR REQUEST_STATUS = DENIED"
@@ -171,7 +171,7 @@ public class ImperialDAOImpl implements ImperialDAO {
 
 	public List<Employee> getEmployeeWithManager() {
 		List<Employee> employeeManager = new ArrayList<>();
-		try (Connection con = ConnectionUtil.getConnection(filename)){
+		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "SELECT EMPLOYEE.FIRSTNAME, EMPLOYEE.LASTNAME, MANAGER.FIRSTNAME, MANAGER.LASTNAME"
 					+ "FROM EMPLOYEE E FULL JOIN MANAGER M ON E.MANAGER = M.ID";
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -206,7 +206,7 @@ public class ImperialDAOImpl implements ImperialDAO {
 
 	public Request getIndivSubordinateRequestsById(int employeeId) {
 		Request indivSubReqs = null;
-		try (Connection con = ConnectionUtil.getConnection(filename)){
+		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "SELECT DETAILS"
 					+ "FROM REQUEST R FULL JOIN MANAGER M"
 					+ "ON R.EMPLOYEE = M.EMPLOYEE"

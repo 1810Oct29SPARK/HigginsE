@@ -6,29 +6,43 @@ import proj.one.dao.EmployeeDAO;
 import proj.one.dao.EmployeeDAOImpl;
 import proj.one.dao.EmployeeUserDAO;
 import proj.one.dao.EmployeeUserDAOImpl;
+import proj.one.dao.EmployeeUserDAOImplProxy;
+import proj.one.dao.EmployeeUserDAOProxy;
 
 public class EmployeeAuthenticationService {
 	
 	EmployeeUserDAO udao = new EmployeeUserDAOImpl();
 	EmployeeDAO edao = new EmployeeDAOImpl();
+	EmployeeUserDAOProxy proxy = new EmployeeUserDAOImplProxy();
 	
 	public EmployeeAuthenticationService() {
 		
 	}
 	
-	public Employee isValidEmployee(EmployeeUser user) {
+	public EmployeeUser isValidEmployee(EmployeeUser user) {
 		Employee e = null;
 		EmployeeUser u = null;
 		String username = user.getEmployeeUser();
 		String password = user.getEmployeePass();
 		u = udao.getUsernameAndPassword(username, password);
-		int id = e.getEmployee_id();
 		if (username != null && password != null) {
 			if (username.equals(u.getEmployeeUser()) && password.equals(u.getEmployeePass())) {
-				e = edao.getEmployeeById(id);
+				u = udao.getEmployeeByUsername(username);
 			}
 		}
-		return e;
+		return u;
+	}
+	
+	public EmployeeUser employeeVerification(String username, String password) {
+		Employee e = null;
+		EmployeeUser user = null;
+		user = proxy.verifyUser(username, password);
+		if (username != null && password != null) {
+			if(username.equals(user.getEmployeeUser()) && password.equals(user.getEmployeePass())) {
+				user = new EmployeeUser(username, password);
+			}
+		}
+		return user;
 	}
 
 }

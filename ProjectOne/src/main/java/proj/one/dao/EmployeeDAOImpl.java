@@ -19,7 +19,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public List<Employee> getEmployeeList() {
 		List<Employee> eList = new ArrayList<Employee>();
-		try (Connection con = ConnectionUtil.getConnection(filename)){
+		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "SELECT * FROM EMPLOYEE";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -44,7 +44,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public Employee getEmployeeById(int id) {
 		Employee employee = new Employee(0, null, null, null, null, 0);
-		try (Connection con = ConnectionUtil.getConnection(filename)){
+		try (Connection con = ConnectionUtil.getConnection()){
 			String sql = "SELECT * FROM EMPLOYEE WHERE ID = ?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, id);
