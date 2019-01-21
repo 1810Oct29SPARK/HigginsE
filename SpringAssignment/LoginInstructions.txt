@@ -1,0 +1,36 @@
+Full-Stack Challenge: 
+
+Submit to your branch in exercise-submissions repository by 7pm. 
+
+Login Portal: Member and Admin
+Build a project that will allow "members" and "administrators" to login and view the homepage 
+Allow a member to register and receive email confirmation. 
+
+---Part 1 Server-side Project Setup
+Create a Spring Boot project with dependencies for Spring Data, Web, Actuator, and H2.
+Set up an in-memory H2 database with the appropriate datasource information in the application.properties file.
+
+--Part 2 Implement your Model and DB
+Create classes to represent USER and USER_ROLE tables. 
+Include a foreign key referencing the role of a user. 
+Add the appropriate JPA annotations in your model classes.
+Include a data.sql file which inserts member and admin roles and some dummy users.
+
+--Part 3 Implement your Data Layer
+Create a user DAO with Spring Data 
+Make/implement 2 methods 
+	-one that takes a User object and returns a User record from the db by its username
+	-one that takes a User object and adds a new User record to the db
+
+--Part 4 Implement your Presentation Layer
+Create an Angular SPA with four views: Login, Registration, Member Home, and Admin Home. 
+Implement routing between these views, or use a modal for Registration. 
+Create a User model in Angular and a service which makes your HTTP requests to the backend. 
+
+--Part 5 Implement your Service Layer and RESTful Endpoints
+Create a UserController (@RestController) to handle the requests from the client
+Create a UserService (@Service) that will contain methods needed to retrieve and register users. 
+Create an AuthService (@Service) to handle dummy authentication. 
+
+--Part 6 Style your view
+Make it look nice! 
