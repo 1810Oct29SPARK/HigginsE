@@ -51,20 +51,17 @@ public class MembersController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/login")
-	public String loginMember(@RequestParam(name="username") String username, @RequestParam(name="password") String password, Model m) {
+	public ResponseEntity<String> loginMember(@RequestParam(name="username") String username, @RequestParam(name="password") String password, Model m) {
 
 		Members user = md.getUsersByUsername(username);
-		System.out.println(user);
-		System.out.println(user.getUserRole().getRoleId());
-		System.out.println(user.getPassword());
-		System.out.println(password);
 		if(user != null) {
 			if(user.getPassword().equals(password) && user.getUserRole().getRoleId() == 2) {
-				return "redirect:http://localhost:4200/adminPage";
+				m.addAttribute(user.getUsername());
+				return new ResponseEntity<>("admin",HttpStatus.OK);
 			}else if(user.getPassword().equals(password)){
-				return "redirect:http://localhost:4200/memberPage";
+				return new ResponseEntity<>("redirect:http://localhost:4200/memberPage",HttpStatus.OK);
 			}
 		}
-			return "redirect:http://localhost:4200/login";
+		return new ResponseEntity<>("redirect:http://localhost:4200/login",HttpStatus.OK);
 	}
 }
