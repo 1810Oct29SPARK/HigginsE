@@ -1,0 +1,15 @@
+form {
+    margin: auto;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.login-page{
+    display: flex;
+    float: center;
+    border: 5px solid gray;
+    width: 30vw;
+    margin: auto;
+}
+.form{
+    text-align: center;
+    margin: 0 auto;
+}
