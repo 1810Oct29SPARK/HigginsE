@@ -37,7 +37,15 @@ public class IndustryUtility {
 
 	public static String getEmailSubjectFromSignedJsonWebToken(String jws) {
 
-		return Jwts.parser().setSigningKey(jwtsecretKey).parseClaimsJws(jws).getBody().getSubject();
+		String email = null;
+
+		try {
+			email = Jwts.parser().setSigningKey(jwtsecretKey).parseClaimsJws(jws).getBody().getSubject();
+		} catch (Exception e) {
+			email = null;
+		}
+
+		return email;
 
 	}
 
