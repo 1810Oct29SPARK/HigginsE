@@ -13,10 +13,20 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USERS")
-public class Users {
+@Table(name="MEMBERS")
+public class Members {
 
-	public Users(int id, String username, String firstName, String lastName, String password, UserRoles userRole) {
+	public Members(String username, String firstName, String lastName, String password, UserRoles userRole) {
+		super();
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.userRole = userRole;
+	}
+
+
+	public Members(int id, String username, String firstName, String lastName, String password, UserRoles userRole) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -25,7 +35,9 @@ public class Users {
 		this.password = password;
 		this.userRole = userRole;
 	}
-	public Users() {
+	
+	
+	public Members() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
