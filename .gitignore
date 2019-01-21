@@ -143,6 +143,8 @@ transaction-logs
 secrets.yml
 .gradletasknamecache
 
+!application.properties
+
 ### Angular ###
 # compiled output
 /dist
