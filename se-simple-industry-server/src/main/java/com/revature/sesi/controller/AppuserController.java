@@ -88,10 +88,11 @@ public class AppuserController {
 				status = HttpStatus.OK;
 			} else {
 				status = HttpStatus.CONFLICT;
+				registeredUser = new Appuser();
 			}
 		} catch (Exception e) {
 			status = HttpStatus.BAD_REQUEST;
-			registeredUser = null;
+			registeredUser = new Appuser();
 		}
 
 		return new ResponseEntity<Appuser>(registeredUser, status);

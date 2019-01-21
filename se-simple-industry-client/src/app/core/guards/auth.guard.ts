@@ -24,7 +24,24 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    return true;
+    if (state.url.includes('member')) {
+      if (this.authService.currentUserRole === 2) {
+        return true;
+      } else {
+        this.router.navigate(['/login']);
+        return false;
+      }
+    } else if (state.url.includes('admin')) {
+      if (this.authService.currentUserRole === 1) {
+        return true;
+      } else {
+        this.router.navigate(['/login']);
+        return false;
+      }
+    } else {
+      this.router.navigate(['/']);
+      return false;
+    }
   }
 
   canActivateChild(
@@ -34,7 +51,24 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   canLoad(route: Route): boolean {
-    return true;
+    if (route.path.includes('member')) {
+      if (this.authService.currentUserRole === 2) {
+        return true;
+      } else {
+        this.router.navigate(['/login']);
+        return false;
+      }
+    } else if (route.path.includes('admin')) {
+      if (this.authService.currentUserRole === 1) {
+        return true;
+      } else {
+        this.router.navigate(['/login']);
+        return false;
+      }
+    } else {
+      this.router.navigate(['/']);
+      return false;
+    }
   }
 
 }

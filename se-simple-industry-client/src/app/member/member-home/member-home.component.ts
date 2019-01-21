@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-member-home',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public authService: AuthService,
+    public router: Router
+  ) { }
 
   ngOnInit() {
+    console.log(this.authService.currentAppuser);
+  }
+
+  logout() {
+    this.authService.logoutAppuser();
   }
 
 }
