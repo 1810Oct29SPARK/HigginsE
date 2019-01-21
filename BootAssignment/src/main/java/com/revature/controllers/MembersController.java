@@ -53,17 +53,18 @@ public class MembersController {
 	@PostMapping("/login")
 	public String loginMember(@RequestParam(name="username") String username, @RequestParam(name="password") String password, Model m) {
 
-	Members user = as.isValid(username, password);
-		if(user == null) {
-		return "Not a valid user";
-		} else if(user.getUserRole().getRole() == "admin"){
-/*			return ("{\"username\":\"" + user.getUsername()
-			+ "\",\"firstName\":\"" + user.getFirstName()
-			+ "\",\"lastName\":\"" + user.getLastName()
-			+ "\",\"role\":\"" + user.getUserRole().getRole());*/
-			return "redirect:http://localhost:4200/adminPage";
-		}else {
-			return "redirect:http://localhost:4200/memberPage";
+		Members user = md.getUsersByUsername(username);
+		System.out.println(user);
+		System.out.println(user.getUserRole().getRoleId());
+		System.out.println(user.getPassword());
+		System.out.println(password);
+		if(user != null) {
+			if(user.getPassword().equals(password) && user.getUserRole().getRoleId() == 2) {
+				return "redirect:http://localhost:4200/adminPage";
+			}else if(user.getPassword().equals(password)){
+				return "redirect:http://localhost:4200/memberPage";
+			}
 		}
+			return "redirect:http://localhost:4200/login";
 	}
 }
