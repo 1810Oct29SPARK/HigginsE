@@ -10,7 +10,7 @@ public class Calculator {
 		return subtractionResult;
 	}
 
-	public double multiply(double arg0, double arg1) 
+	public double multiply(double arg0, double arg1) {
 		double multiplicationResult = arg0 * arg1;
 		return multiplicationResult;
 	}
@@ -19,5 +19,5 @@ public class Calculator {
 		double divisionResult = arg0 / arg1;
 		return divisionResult;
 	}
-}
-	
+
+}	
