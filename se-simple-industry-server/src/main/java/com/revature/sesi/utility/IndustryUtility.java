@@ -23,9 +23,19 @@ import io.jsonwebtoken.security.Keys;
 public class IndustryUtility {
 
 	private static Key jwtsecretKey;
+	private static long newAppuserId;
 
 	static {
 		jwtsecretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+		newAppuserId = 8L;
+	}
+
+	public static long getNewAppuserId() {
+		return newAppuserId;
+	}
+
+	public static void incrementNewAppuserId() {
+		++newAppuserId;
 	}
 
 	public static String createSignedJsonWebTokenWithEmailSubject(String email) {

@@ -1,5 +1,10 @@
 package com.revature.sesi.controller;
 
+import java.io.BufferedReader;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.sesi.model.Appuser;
 import com.revature.sesi.model.LoginPayload;
 import com.revature.sesi.service.AppuserService;
+import com.revature.sesi.utility.IndustryUtility;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -60,6 +66,35 @@ public class AppuserController {
 		}
 
 		return new ResponseEntity<Appuser>(validatedAppuser, status);
+
+	}
+
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/register")
+	public ResponseEntity<Appuser> sendNewlyRegisteredAppuserIfValid(HttpServletRequest request) {
+
+		HttpStatus status = HttpStatus.I_AM_A_TEAPOT;
+		Appuser registeredUser = null;
+
+		try (BufferedReader br = request.getReader()) {
+			JSONObject jo = new JSONObject(IndustryUtility.readRequest(br));
+			String firstName = jo.getString("firstName");
+			String lastName = jo.getString("lastName");
+			String email = jo.getString("email");
+			String password = jo.getString("password");
+
+			registeredUser = appuserService.saveNewAppuserAsMember(firstName, lastName, email, password);
+			if (registeredUser != null) {
+				status = HttpStatus.OK;
+			} else {
+				status = HttpStatus.CONFLICT;
+			}
+		} catch (Exception e) {
+			status = HttpStatus.BAD_REQUEST;
+			registeredUser = null;
+		}
+
+		return new ResponseEntity<Appuser>(registeredUser, status);
 
 	}
 
