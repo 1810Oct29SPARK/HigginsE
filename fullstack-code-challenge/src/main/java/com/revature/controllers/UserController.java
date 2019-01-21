@@ -1,8 +1,10 @@
 package com.revature.controllers;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import com.revature.beans.User;
 import com.revature.service.AuthService;
 import com.revature.service.UserService;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
@@ -30,6 +33,7 @@ public class UserController {
 		this.as = as;
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 	@PostMapping(value = "/login")
 	public ResponseEntity<User> login(@RequestBody Login login) {
 		ResponseEntity<User> resp = null;
@@ -42,7 +46,8 @@ public class UserController {
 		return resp;
 	}
 	
-	@PostMapping(value = "/create")
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(value = "/create", consumes= "application/json")
 	public ResponseEntity<String> createUser(@RequestBody User user) {
 		ResponseEntity<String> resp = null;
 		try {
@@ -54,18 +59,23 @@ public class UserController {
 		return resp;
 	}
 	
-	@PostMapping(value = "/getByUsername")
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(value = "/getByUsername", consumes= "application/json")
 	public ResponseEntity<User> getUserByUsername(@RequestBody String username) {
 		ResponseEntity<User> resp = null;
-		try {
-			resp = new ResponseEntity<User>(us.getUserByUsername(username), HttpStatus.OK);
-		} catch (Exception e) {
-			resp = new ResponseEntity<User>(new User(), HttpStatus.BAD_REQUEST);
+		JSONObject js = new JSONObject(username);
+		String user = js.getString("username");
+		User u = us.getUserByUsername(user);		
+		if (u != null) {
+			resp = new ResponseEntity<User>(u, HttpStatus.OK);
+		} else {
+			resp = new ResponseEntity<User>(u, HttpStatus.BAD_REQUEST);
 		}
 		return resp;
 	}
 	
-	@PostMapping(value = "/getUser")
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(value = "/getUser", consumes= "application/json")
 	public ResponseEntity<User> getUser(@RequestBody User user) {
 		ResponseEntity<User> resp = null;
 		try {
