@@ -21,4 +21,11 @@ public class UserService {
 	public List<User> getUsers(){
 		return ud.findAll();
 	}
+	public User validateUser(String login, String pass) {
+		if (login.equals("ebanks") && pass.equals("password1")) {
+			return new User();
+		} else {
+			return null;
+		}
+	}
 }
