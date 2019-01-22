@@ -1,0 +1,16 @@
+.example-card{
+    width: 25%;
+    margin: auto;
+}
+.mat-card-header{
+    margin: auto;
+    text-align: center;
+}
+
+.example-full-width{
+    text-align: center;
+}
+
+body{
+    color: purple;
+}
