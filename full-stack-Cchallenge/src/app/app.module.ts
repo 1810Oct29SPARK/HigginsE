@@ -33,7 +33,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
   ],
-  providers: [Users, RestfulAPIService, DataService],
+  providers: [RestfulAPIService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
