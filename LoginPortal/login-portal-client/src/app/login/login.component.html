@@ -1,0 +1,13 @@
+<body>
+  <h1>Log in to see your profile.</h1>
+  <div class="card">
+    <form (ngSubmit)="onSignIn(f)" #f="ngForm">
+      <label for="username">Username</label>
+      <input type="text" name="username" class="form-control" ngModel required>
+    </form>
+    <button routerLink='/adminhome' [disabled]="!f.form.valid" class="btn btn-primary" type="submit">Sign In</button>
+
+    <router-outlet></router-outlet>
+  </div>
+</body>
+

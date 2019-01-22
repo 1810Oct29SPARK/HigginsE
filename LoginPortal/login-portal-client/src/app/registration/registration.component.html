@@ -1,0 +1,14 @@
+<div class="card">
+    <form (ngSubmit)="onSignUp(f)" #f="ngForm">
+      <label for="name">Name (First and Last)</label>
+      <input type="text" name="name" class="form-control" ngModel required>
+      <label for="username">Username</label>
+      <input type="text" name="username" class="form-control" ngModel required>
+      <label for="email">Email</label>
+      <input type="text" name="email" class="form-control" ngModel required>
+    </form>
+    <button routerLink='/login' [disabled]="!f.form.valid" class="btn btn-primary" type="submit">Register</button>
+  
+    <router-outlet></router-outlet>
+  </div>
+  
