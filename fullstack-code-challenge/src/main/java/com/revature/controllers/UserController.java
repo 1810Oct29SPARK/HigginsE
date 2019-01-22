@@ -47,20 +47,20 @@ public class UserController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping(value = "/create", consumes= "application/json")
-	public ResponseEntity<String> createUser(@RequestBody User user) {
-		ResponseEntity<String> resp = null;
+	@PostMapping(value = "/create")
+	public ResponseEntity<User> createUser(@RequestBody User user) {
+		ResponseEntity<User> resp = null;
 		try {
 			us.createUser(user);
-			resp = new ResponseEntity<String>("SUCCESSFULLY CREATED", HttpStatus.OK);
+			resp = new ResponseEntity<User>(us.getUser(user), HttpStatus.OK);
 		} catch (Exception e) {
-			resp = new ResponseEntity<String>("FAILURE! ERROR: " + e, HttpStatus.BAD_REQUEST);
+			resp = new ResponseEntity<User>(us.getUser(user), HttpStatus.BAD_REQUEST);
 		}
 		return resp;
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping(value = "/getByUsername", consumes= "application/json")
+	@PostMapping(value = "/getByUsername")
 	public ResponseEntity<User> getUserByUsername(@RequestBody String username) {
 		ResponseEntity<User> resp = null;
 		JSONObject js = new JSONObject(username);
@@ -75,7 +75,7 @@ public class UserController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping(value = "/getUser", consumes= "application/json")
+	@PostMapping(value = "/getUser")
 	public ResponseEntity<User> getUser(@RequestBody User user) {
 		ResponseEntity<User> resp = null;
 		try {

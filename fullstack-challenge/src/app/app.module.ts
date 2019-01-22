@@ -10,10 +10,16 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NormalUserComponent } from './normal-user/normal-user.component';
 import { AdminComponent } from './admin/admin.component';
-import { AlertComponent } from './alert/alert.component';
-import { AlertService } from './alert.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { RegisterComponent } from './register/register.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'user', component: NormalUserComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'register', component: RegisterComponent }
+];
 
 @NgModule({
   declarations: [
@@ -22,20 +28,16 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     NormalUserComponent,
     AdminComponent,
-    AlertComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule, 
     ReactiveFormsModule,
     FormsModule,
-    RouterModule.forRoot(
-      [
-        { path: "", component: LoginComponent}
-      ]
-    )
+    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
   ],
-  providers: [User, ApiService, DataService, AlertService],
+  providers: [User, ApiService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

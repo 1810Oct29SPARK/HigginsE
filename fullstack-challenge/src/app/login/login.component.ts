@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { ApiService } from '../api.service';
-import { AlertService } from '../alert.service';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,11 +16,13 @@ export class LoginComponent implements OnInit {
     submitted = false;
     username: string;
     password: string;
+    user: any;
 
     constructor(
         private formBuilder: FormBuilder,
         private service: ApiService,
-        private alertService: AlertService
+        private dataService: DataService,
+        private router: Router
     ) {}
 
     ngOnInit() {
@@ -30,7 +33,6 @@ export class LoginComponent implements OnInit {
 
     }
 
-    // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
@@ -42,13 +44,23 @@ export class LoginComponent implements OnInit {
         this.password = this.f.password.value;
         this.loading = true;
         this.service.login(this.username, this.password)
-            .pipe(first())
             .subscribe(
                 data => {
                   console.log(data)
+                  this.loading = false;
+                  this.user = data;
+                  if (this.user != null) {
+                    this.dataService.setUser(this.user);
+                    if (this.user.roleId.id == 2) {
+                      this.router.navigateByUrl('/admin');
+                    } else {
+                      this.router.navigateByUrl('/user');
+                    }
+                  } else {
+                    this.loginForm.reset();
+                  }
                 },
                 error => {
-                    this.alertService.error(error);
                     this.loading = false;
                 });
     }

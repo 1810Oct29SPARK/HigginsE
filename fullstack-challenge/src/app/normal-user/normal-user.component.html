@@ -1,3 +1,11 @@
-<p>
-  normal-user works!
-</p>
+<div *ngIf="user" class="container text-center">
+  <div class="jumbotron">
+      <h2>Welcome to your profile, {{ user.username }}!</h2>
+      <br><br>
+    <h4>Email: {{ user.email }}</h4>
+    <br>
+    <h4>User Role: {{ user.roleId.name }}</h4>
+    <br>
+    <button class="btn btn-primary" (click)="logout()">Logout</button>
+  </div>
+</div>
