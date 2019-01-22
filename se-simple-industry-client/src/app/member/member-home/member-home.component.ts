@@ -10,13 +10,17 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class MemberHomeComponent implements OnInit {
 
+  firstName: string;
+  lastName: string;
+
   constructor(
     public authService: AuthService,
     public router: Router
   ) { }
 
   ngOnInit() {
-    console.log(this.authService.currentAppuser);
+    this.firstName = this.authService.currentAppuser.firstName;
+    this.lastName = this.authService.currentAppuser.lastName;
   }
 
   logout() {

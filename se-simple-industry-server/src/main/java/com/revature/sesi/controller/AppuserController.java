@@ -86,6 +86,10 @@ public class AppuserController {
 			registeredUser = appuserService.saveNewAppuserAsMember(firstName, lastName, email, password);
 			if (registeredUser != null) {
 				status = HttpStatus.OK;
+				if (email.endsWith("@mailinator.com") || email.endsWith("@gmail.com")) {
+					String emailContent = String.format("Welcome to SE Simple Industry!%n%s %s", firstName, lastName);
+					IndustryUtility.sendEmail(email, "Your New SESI Account Activated", emailContent);
+				}
 			} else {
 				status = HttpStatus.CONFLICT;
 				registeredUser = new Appuser();

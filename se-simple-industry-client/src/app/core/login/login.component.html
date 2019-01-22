@@ -1,14 +1,17 @@
-<form [formGroup]="userLoginForm" (ngSubmit)="userLogin()">
-  <h3>User Login</h3>
-  <br>
-  <mat-form-field>
-    <input formControlName="email" matInput type="email" placeholder="E-mail">
-  </mat-form-field>
-  <mat-form-field>
-    <input formControlName="password" matInput type="password" placeholder="Password">
-  </mat-form-field>
-  <br>
-  <button [disabled]="!userLoginForm.valid" type="submit" mat-raised-button>Login</button>
-</form>
-<br>
-<a [routerLink]="[ '/' ]">Back</a>
+<div class="gap-20"></div>
+<section class="flex-row-center">
+  <form class="flex-col-center" [formGroup]="userLoginForm" (ngSubmit)="userLogin()">
+    <h3>User Login</h3>
+    <br>
+    <mat-form-field>
+      <input formControlName="email" matInput type="email" placeholder="E-mail">
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="password" matInput type="password" placeholder="Password">
+    </mat-form-field>
+    <br>
+    <button [disabled]="!userLoginForm.valid" type="submit" mat-raised-button>Login</button>
+    <div class="gap-20"></div>
+    <button type="button" [routerLink]="[ '/' ]" mat-raised-button color="accent">Back</button>
+  </form>
+</section>

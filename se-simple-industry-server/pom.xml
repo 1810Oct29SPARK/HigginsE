@@ -71,6 +71,11 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
 		</dependency>
+		<!-- SunMail -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+		</dependency>
 		<!--Apache Commons Lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
