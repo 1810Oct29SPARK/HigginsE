@@ -28,7 +28,7 @@ import { ManagerHomeComponent } from './manager-home/manager-home.component';
     RegistrationComponent,
     NavComponent,
     SigninComponent,
-    ManagerHomeComponent
+    ManagerHomeComponent,
   ],
   imports: [
     BrowserModule,

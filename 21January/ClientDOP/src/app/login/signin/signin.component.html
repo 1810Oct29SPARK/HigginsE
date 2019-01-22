@@ -1,10 +1,35 @@
 <form (ngSubmit)="onSignIn(f)" #f="ngForm">
   <div class="form-group">
-    <label for="username">email</label>
-    <input type="text" id="email" name="email" ngModel class="form-control">
-    <label for="password">password</label>
-    <input type="password" id="password" name="password" ngModel class="form-control">
+
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label for="email">Email</mat-label>
+        <input matInput placeholder="email@example.com" type="email" id="email" name="email" ngModel class="form-control">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Fill form field</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label for="password">Password</mat-label>
+        <input matInput placeholder="********" type="password" id="password" name="password" ngModel class="form-control">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+
+      </mat-form-field>
+    </p>
 
   </div>
-  <button class="btn btn-primary" type="submit">Sign In</button>
+  <button type="submit">Sign In</button>
 </form>
