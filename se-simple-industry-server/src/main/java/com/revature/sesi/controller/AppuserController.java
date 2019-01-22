@@ -21,7 +21,8 @@ import com.revature.sesi.service.AppuserService;
 import com.revature.sesi.utility.IndustryUtility;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = { "http://localhost:4200",
+		"http://esoma-se-simple-industry.s3-website.us-east-2.amazonaws.com" })
 @RequestMapping("/appuser")
 public class AppuserController {
 
@@ -41,7 +42,8 @@ public class AppuserController {
 		this.appuserService = appuserService;
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = { "http://localhost:4200",
+			"http://esoma-se-simple-industry.s3-website.us-east-2.amazonaws.com" })
 	@PostMapping("/login")
 	public ResponseEntity<Appuser> sendAuthenticatedAppuserIfLoginValid(@RequestBody LoginPayload loginPayload) {
 
@@ -69,7 +71,8 @@ public class AppuserController {
 
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = { "http://localhost:4200",
+			"http://esoma-se-simple-industry.s3-website.us-east-2.amazonaws.com" })
 	@PostMapping("/register")
 	public ResponseEntity<Appuser> sendNewlyRegisteredAppuserIfValid(HttpServletRequest request) {
 
