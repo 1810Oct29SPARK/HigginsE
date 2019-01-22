@@ -1,0 +1,12 @@
+<H2>ADMIN MAN</H2>
+<img src="http://www.funnyjunksite.com/pictures/wp-content/uploads/2015/09/Becomes-Admin-Of-Meme-Group.jpg" alt="">
+
+<div *ngIf="user" class="container text-center">
+  <div class="jumbotron">
+    <h2>Admin Profile Welcome, {{ user.name }}!</h2>
+    <br><br>
+    <h4>Email: {{ user.email }}</h4>
+    <br>
+    <h4>User Role: {{ user.roleid.name }}</h4>
+  </div>
+</div>

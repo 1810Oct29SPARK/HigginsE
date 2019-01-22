@@ -1,0 +1,11 @@
+<H2>Member Man</H2>
+<img src="http://rci-online.org/wp-content/uploads/member.jpg" alt="">
+<div *ngIf="user" class="container text-center">
+  <div class="jumbotron">
+    <h2>Member Profile Welcome, {{ user.name }}!</h2>
+    <br><br>
+    <h4>Email: {{ user.email }}</h4>
+    <br>
+    <h4>User Role: {{ user.roleid.name }}</h4>
+  </div>
+</div>
