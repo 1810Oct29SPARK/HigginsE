@@ -1,3 +1,4 @@
-GitRepositoriesView.GitDirectories=C\:\\GitHubCloneRepo\\Guzman-J\\.git;
-GitRepositoriesView.GitDirectories.relative=C\:\\GitHubCloneRepo\\Guzman-J\\.git;
+GitRepositoriesView.GitDirectories=C\:\\GitHubCloneRepo\\exercise-submissions\\.git;C\:\\GitHubCloneRepo\\Guzman-J\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;C\:\\GitHubCloneRepo\\Guzman-J\\.git;
+core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1

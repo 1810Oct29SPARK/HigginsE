@@ -6,6 +6,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\GitHubCloneRepo\exercise-submissions\MLK CChallenge"/>
 			<item value="C:\Users\Joe\eclipse-workspace\MavenDemo"/>
 		</list>
 		<list key="projectNameTemplate">
