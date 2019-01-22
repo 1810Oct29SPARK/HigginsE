@@ -1,0 +1,7 @@
+<div class="card">
+  <form (ngSubmit)="onSignIn(f)" #f="ngForm">
+    <label for="email">Email</label>
+    <input type="text" name="email" class="form-control" ngModel>
+  </form>
+  <button [disabled]="!f.form.valid" class="btn btn-primary" type="submit">Sign In</button>
+</div>
