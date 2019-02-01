@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.revature.beans.Members;
 import com.revature.repositories.MembersDAO;
 
-
+@Service
 public class MembersService {
 	
 	private MembersDAO ud;
