@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="PCC-Configuration"
+	packages="com.revature.pcc">
+
+	<Appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%m %ex%n" />
+		</Console>
+
+		<File name="mainAppender" fileName="main.log">
+			<PatternLayout>
+				<Pattern>%d{MMM-dd, HH:mm} %m %ex%n</Pattern>
+			</PatternLayout>
+		</File>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="mainLogger" level="info" additivity="true">
+			<AppenderRef ref="mainAppender" level="info" />
+		</Logger>
+
+		<Root level="info" additivity="true">
+			<AppenderRef ref="STDOUT" level="info" />
+		</Root>
+	</Loggers>
+
+</Configuration>
