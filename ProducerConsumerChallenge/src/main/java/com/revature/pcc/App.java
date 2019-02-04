@@ -10,7 +10,7 @@ public class App {
 
 		Logger logger = LogManager.getLogger("mainLogger");
 
-		logger.info("\n==================== Welcome to Market Simulator ====================\n");
+		logger.info("\n\n==================== Welcome to Market Simulator ====================\r\n");
 
 		MarketConfiguration mc = new MarketConfiguration("market.properties");
 		mc.configure();
@@ -19,7 +19,7 @@ public class App {
 		Market marketSim = mc.buildMarket();
 		marketSim.openMarket();
 
-		logger.info("\n==================== End of Market Simulator ====================\n");
+		logger.info("==================== End of Market Simulator ====================\r\n\r\n");
 
     }
 

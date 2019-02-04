@@ -154,7 +154,7 @@ public class MarketConfiguration {
 			throw new IllegalStateException("Invalid property values. Abort.");
 		}
 
-		this.logger.info("Configuration complete.");
+		this.logger.info("Configuration complete.\r\n");
 		this.readyToBuild = true;
 
 	}
@@ -162,7 +162,7 @@ public class MarketConfiguration {
 	public void printConfiguration() {
 
 		if (this.readyToBuild) {
-			System.out.println("\n===== Configuration Report =====");
+			System.out.println("===== Configuration Report =====");
 			System.out.println("marketRunTime: " + this.marketRunTime);
 			System.out.println("basketSize: " + this.basketSize);
 			System.out.println("initialLoad: " + this.initialLoad);
@@ -176,7 +176,7 @@ public class MarketConfiguration {
 			System.out.println("maxProduceInterval: " + this.maxProduceInterval);
 			System.out.println("minConsumeInterval: " + this.minConsumeInterval);
 			System.out.println("maxConsumeInterval: " + this.maxConsumeInterval);
-			System.out.println("===== End of Configuration Report =====");
+			System.out.println("===== End of Configuration Report =====\n");
 		} else {
 			System.out.println("Not configured or invalid configuration, cannot proceed.");
 		}
@@ -277,7 +277,7 @@ class ConfiguredMarket implements Market {
 			}
 		);
 
-		this.logger.info("Opening market...");
+		this.logger.info("Opening market...\r\n");
 
 		threadPool.forEach(
 			th -> {
@@ -311,7 +311,7 @@ class ConfiguredMarket implements Market {
 			return;
 		}
 
-		this.logger.info("Market closed.");
+		this.logger.info("Market closed.\r\n");
 		this.isClosed = true;
 		this.printReport();
 
@@ -321,13 +321,13 @@ class ConfiguredMarket implements Market {
 	public void printReport() {
 
 		if (this.isClosed) {
-			this.logger.info("\n===== Market Report =====");
+			this.logger.info("===== Market Report =====");
 			this.logger.info("Open time: " + this.openTime.toString());
 			this.logger.info("Close time: " + this.closeTime.toString());
 			this.logger.info("Total producers: " + this.activeProducers.size());
 			this.logger.info("Total consumers: " + this.activeConsumers.size());
 			this.logger.info("Goods in basket: " + this.marketBasket.getGoodList().size());
-			this.logger.info("===== End of Market Report =====");
+			this.logger.info("===== End of Market Report =====\r\n");
 		} else {
 			System.out.println("This market has not opened yet.");
 		}
