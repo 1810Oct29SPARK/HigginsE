@@ -5,8 +5,8 @@
     Each multiple of 5 replaced with 'buzz'
     Each multiple of both 3 and 5 replaced with 'fizzbuzz'
 */
+
 function fizzBuzz1(){
-<<<<<<< HEAD
     for (i = 1; i <= 100; i++) {
         if (i % 3 == 0 && i % 5 == 0) {
             console.log("fizzbuzz");
@@ -20,9 +20,7 @@ function fizzBuzz1(){
             console.log(i);
         }
     }
-=======
-   console.log('fizzbuzz1');
->>>>>>> 0d7bb8e65486f4fa7cec16d6ddfe2802d8ddeb23
+    
 }
 
 /*
@@ -47,6 +45,7 @@ function fizzBuzz2(m,n){
             console.log(i);
         }
     }
+}
 
 /*
     Variable-length, varying-fizz/buzz number FizzBuzz:
@@ -82,23 +81,31 @@ function fizzBuzz3(m,n,fizzNum,buzzNum){
     Validation the m <= n is a plus. 
     The arrays may have any length, but validation that their length is the SAME is a plus. 
 */
-function fizzBuzz4(m,n,numbers,terms){
 
-    for (i = m; i <= n; i++) {
-        if (i % numbers[0] == 0 && i % numbers[1] == 0) {
-            console.log(terms[0]+terms[1]);
-        } 
-        else if (i % numbers[0] == 0) {
-            console.log(terms[0]);
-        }
-        else if (i % numbers[1] == 0) {
-            console.log(terms[1]);
-        }
-        
-        else {
-            console.log(i);
+
+function fizzBuzz4(m,n,numbers,terms){
+    // 
+    if (m > n || numbers.length > terms.length || terms.length > numbers.length) {
+        console.log ("Error!");
+    }
+
+    else {
+        for (i = m; i <= n; i++) {
+            termString = " ";
+            for (y = 0; y < numbers.length; y++) {
+                if (i % numbers[y] === 0) {
+                    termString += terms[y];
+                }
+            }
+            if (termString != " ") {
+            console.log(termString);
+            }
+            else {
+                console.log(i);
+            }
         }
     }
 }
 
+// if you want to use JSON data into application, use Parse
 
