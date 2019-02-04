@@ -101,6 +101,7 @@ Servers/
 */target/
 
 *.properties
+!market.properties
 
 ### Spring Boot ###
 *#
